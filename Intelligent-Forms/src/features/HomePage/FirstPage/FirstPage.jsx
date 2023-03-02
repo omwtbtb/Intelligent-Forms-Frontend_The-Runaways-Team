@@ -8,7 +8,7 @@ function FirstPage() {
     <div className="FirstPage">
       <div className="Nav-Bar">
         <div className="Form">
-          <img src="Imagine/Logo.png" alt="Logo" />
+          <img src="assets/Logo.png" alt="Logo" />
           <div className="Inf1">Intelligent Forms</div>
         </div>
         <Link to="/" className="Home">
@@ -18,18 +18,18 @@ function FirstPage() {
           Contact Us
         </Link>
         <div className="Login_Register">
-          <img src="Imagine/Login.png" alt="Logo" />
+          <img src="assets/Login.png" alt="Logo" />
           <Link to="/Login_Register" className="Inf2">
             Login/Register
           </Link>
         </div>
       </div>
       <div className="Poza">
-        <img src="Imagine/Form.png" alt="Logo" />
+        <img src="assets/Form.png" alt="Logo" />
       </div>
       <div className="Welcome">Welcome to Intelligent Forms!</div>
       <div className="Semnatura">
-        <img src="Imagine/Desen.png" alt="Logo" />
+        <img src="assets/Desen.png" alt="Logo" />
       </div>
       <div className="Text">
         Here we provide intelligent forms solutions to help streamline your data

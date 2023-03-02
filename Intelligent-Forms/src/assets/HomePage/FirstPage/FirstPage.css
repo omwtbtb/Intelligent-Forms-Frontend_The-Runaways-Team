@@ -1,0 +1,99 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #d1def5;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Nav-Bar {
+  padding: 20px;
+  margin: 0 auto;
+  padding-right: 100px;
+  background-color: #d1def5;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #473f65;
+  font-weight: 700;
+  flex-flow: row wrap;
+  display: flex;
+  gap: 2rem;
+}
+
+.Poza {
+  background-color: #d1def5;
+  padding-top: 40px;
+  padding-right: 80px;
+  float: right;
+}
+
+.Welcome {
+  padding-top: 100px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  padding-left: 35px;
+  padding-top: 60px;
+}
+
+.Poza img {
+  max-width: 70%;
+  max-height: auto;
+  float: right;
+}
+
+.Form {
+  display: flex;
+  text-align: left;
+  flex-basis: auto;
+  margin-right: auto;
+}
+
+.Semnatura {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.Text {
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 30px;
+  font-size: 17px;
+  padding-bottom: 400px;
+}
+.Inf1 {
+  position: relative;
+  top: 25px;
+}
+
+.Home {
+  position: relative;
+  top: 25px;
+  text-decoration: none;
+}
+
+.Contact-Us {
+  position: relative;
+  top: 25px;
+  text-decoration: none;
+}
+
+.Login_Register {
+  position: relative;
+  top: 15px;
+}
+
+.Inf2 {
+  position: relative;
+  top: -10px;
+  left: 15px;
+  text-decoration: none;
+}
+.Delimitation {
+  background-color: #473f65;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}

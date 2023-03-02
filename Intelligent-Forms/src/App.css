@@ -1,5 +1,4 @@
 body {
-  background-image: url("Imagine/Home.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 0;
+  margin: 0;
 }

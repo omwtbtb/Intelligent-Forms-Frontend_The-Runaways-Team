@@ -8,8 +8,8 @@ function AppRouter() {
     <Router>
       <Routes>
         <Route exact path="/" element={<FirstPage />} />
-        <Route exact path="/Contact_Us" element={<Test />} />
-        <Route exact path="/Login_Register" element={<Test />} />
+        <Route exact path="/Contact_Us" element={<Test/>} />
+        <Route exact path="/Login_Register" element={<Test/>} />
       </Routes>
     </Router>
   );

@@ -6,7 +6,7 @@ function NavBar2() {
   return (
     <div className="Nav-Bar">
       <div className="Form">
-        <img src="assets/Logo.png" alt="Logo" />
+        <img src="images/Logo.png" alt="Logo" />
         <div className="Inf1">Intelligent Forms</div>
       </div>
       <Link to="/Create_Form" className="Home">
@@ -16,7 +16,7 @@ function NavBar2() {
         Templates
       </Link>
       <div className="Login_Register">
-        <img src="assets/Login.png" alt="Logo" />
+        <img src="images/Login.png" alt="Logo" />
         <Link to="/" className="Inf2">
           Profile
         </Link>

@@ -8,7 +8,7 @@ import FirstPage from "../FirstPage/FirstPage";
 import Test from "../LoginPage/Test";
 
 function AppRouter() {
-  const isLoogin = false;
+  const isLoogin = true;
   return (
     <Router>
       <Routes>

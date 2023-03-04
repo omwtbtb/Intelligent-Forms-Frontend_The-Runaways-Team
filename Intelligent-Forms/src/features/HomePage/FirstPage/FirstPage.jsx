@@ -1,7 +1,6 @@
 import React from "react";
 import "./FirstPage.css";
 
-import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 
 function FirstPage() {
@@ -9,11 +8,11 @@ function FirstPage() {
     <div className="FirstPage">
       <NavBar />
       <div className="Poza">
-        <img src="assets/Form.png" alt="Logo" />
+        <img src="images/Form.png" alt="Logo" />
       </div>
       <div className="Welcome">Welcome to Intelligent Forms!</div>
       <div className="Semnatura">
-        <img src="assets/Desen.png" alt="Logo" />
+        <img src="images/Desen.png" alt="Logo" />
       </div>
       <div className="Text">
         Here we provide intelligent forms solutions to help streamline your data

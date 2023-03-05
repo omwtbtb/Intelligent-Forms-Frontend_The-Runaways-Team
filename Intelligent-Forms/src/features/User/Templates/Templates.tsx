@@ -16,9 +16,9 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function Templates() {
   const [field, setfield] = React.useState("");
   const [val, setVal] = useState([""]);
-  const [sect, setSect] = useState([""]);
+  const [sect, setSect] = useState([{ numeset: "", content: "" }]);
   const [selectedValue, setSelectedValue] = useState("");
-  const [edittor, setEditor] = useState([""]);
+  const [IndexCurentSec, setIndexCurentSec] = useState(0);
 
   const handleChange = (event: SelectChangeEvent) => {
     setfield(event.target.value);
@@ -35,30 +35,39 @@ function Templates() {
   };
 
   const handleChanges = (e, index) => {
-    const updatedValues = val.map((value, i) => {
-      if (i === index) {
-        return e.target.value;
-      } else {
-        return value;
-      }
-    });
+    const updatedValues = [...val];
+
+    updatedValues[index] = e.target.value;
 
     setVal(updatedValues);
   };
 
   const ChangeEvent = (e, index) => {
-    const updatedSection = sect.map((value, i) => {
-      if (i === index) {
-        return e.target.value;
-      } else {
-        return value;
-      }
-    });
+    const updatedSection = [...sect];
+
+    updatedSection[index].numeset = e.target.value;
 
     setSect(updatedSection);
   };
 
-  const handleChildClick = (childValue) => {};
+  const handleChildClick = (childValue) => {
+    const updateEditor = [...sect];
+    console.log(IndexCurentSec);
+    console.log(sect);
+
+    updateEditor[IndexCurentSec] = {
+      ...updateEditor[IndexCurentSec],
+      content: childValue,
+    };
+    console.log(updateEditor);
+
+    setSect(updateEditor);
+  };
+
+  const HandlerAddSection = () => {
+    setIndexCurentSec(sect.length - 1);
+    setSect((preSteat) => [...preSteat, { numeset: "", content: "" }]);
+  };
 
   return (
     <div>
@@ -126,6 +135,7 @@ function Templates() {
                         variant="outlined"
                         size="small"
                         onChange={(e) => ChangeEvent(e, index1)}
+                        onClick={() => setIndexCurentSec(index1)}
                       />
                     </div>
                     <Button
@@ -142,11 +152,7 @@ function Templates() {
             </div>
           </div>
           <div className="buttons">
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={() => setSect([...sect, ""])}
-            >
+            <Button variant="outlined" size="small" onClick={HandlerAddSection}>
               Add New
             </Button>
           </div>

@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Create_Form from "../../User/CreateForm/Create_Form";
 import Profile from "../../User/Profile/Profile";
 import Templates from "../../User/Templates/Templates";
+import Update_Form from "../../User/UpdateForm/Update_Form";
 import ContactUs from "../FirstPage/ContactUs";
 import FirstPage from "../FirstPage/FirstPage";
 import Test from "../LoginPage/Test";
 
 function AppRouter() {
-  const isLoogin = true;
+  const isLoogin = false;
   return (
     <Router>
       <Routes>
@@ -19,13 +19,13 @@ function AppRouter() {
         />
         <Route
           exact
-          path={isLoogin ? "/Templates" : "/Contact_Us"}
-          element={isLoogin ? <Templates /> : <ContactUs />}
+          path={isLoogin ? "/Update_Form" : "/Contact_Us"}
+          element={isLoogin ? <Update_Form /> : <ContactUs />}
         />
         <Route
           exact
           path={isLoogin ? "/Create_Form" : "/Login_Register"}
-          element={isLoogin ? <Create_Form /> : <Test />}
+          element={isLoogin ? <Templates /> : <Test />}
         />
       </Routes>
     </Router>

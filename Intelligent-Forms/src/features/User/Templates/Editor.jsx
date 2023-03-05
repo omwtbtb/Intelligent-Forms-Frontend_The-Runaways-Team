@@ -4,11 +4,13 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
-function EditorComponent() {
+function EditorComponent({ onChildClick }) {
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
-    setText(e.htmlValue);
+    const htmlValue = e.htmlValue;
+    setText(htmlValue);
+    onChildClick(htmlValue);
   };
 
   return (
@@ -16,7 +18,7 @@ function EditorComponent() {
       <Editor
         value={text}
         onTextChange={handleChange}
-        style={{ height: "320px" }}
+        style={{ height: "120px" }}
       />
     </div>
   );

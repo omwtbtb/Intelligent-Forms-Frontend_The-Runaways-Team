@@ -12,8 +12,8 @@ function NavBar2() {
       <Link to="/Create_Form" className="Home">
         Create Form
       </Link>
-      <Link to="/Templates" className="Contact-Us">
-        Templates
+      <Link to="/Update_Form" className="Contact-Us">
+        Update Form
       </Link>
       <div className="Login_Register">
         <img src="images/Login.png" alt="Logo" />

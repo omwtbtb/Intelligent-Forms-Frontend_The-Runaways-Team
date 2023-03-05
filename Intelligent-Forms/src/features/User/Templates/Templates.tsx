@@ -18,6 +18,7 @@ function Templates() {
   const [val, setVal] = useState([""]);
   const [sect, setSect] = useState([""]);
   const [selectedValue, setSelectedValue] = useState("");
+  const [edittor, setEditor] = useState([""]);
 
   const handleChange = (event: SelectChangeEvent) => {
     setfield(event.target.value);
@@ -41,10 +42,23 @@ function Templates() {
         return value;
       }
     });
-    console.log(updatedValues);
 
     setVal(updatedValues);
   };
+
+  const ChangeEvent = (e, index) => {
+    const updatedSection = sect.map((value, i) => {
+      if (i === index) {
+        return e.target.value;
+      } else {
+        return value;
+      }
+    });
+
+    setSect(updatedSection);
+  };
+
+  const handleChildClick = (childValue) => {};
 
   return (
     <div>
@@ -111,6 +125,7 @@ function Templates() {
                         id="outlined-basic"
                         variant="outlined"
                         size="small"
+                        onChange={(e) => ChangeEvent(e, index1)}
                       />
                     </div>
                     <Button
@@ -144,6 +159,10 @@ function Templates() {
                 type="number"
                 InputLabelProps={{
                   shrink: true,
+                }}
+                inputProps={{
+                  min: "0",
+                  step: "1",
                 }}
                 size="small"
               />
@@ -216,7 +235,7 @@ function Templates() {
             </div>
           </div>
           <div className="content">Content:</div>
-          <EditorComponent />
+          <EditorComponent onChildClick={handleChildClick} />
         </div>
       </div>
       <div className="Create">

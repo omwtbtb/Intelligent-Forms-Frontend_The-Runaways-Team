@@ -1,27 +1,31 @@
-import React, { useState } from "react";
-import NavBar2 from "../NavBar2";
-import "./Templates.css";
-import TextField from "@mui/material/TextField";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import React, { useState } from "react";
+import NavBar2 from "../NavBar2";
 import EditorComponent from "./Editor";
 import BasicSelect from "./Selecter";
-import DeleteIcon from "@mui/icons-material/Delete";
+import "./Templates.css";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Templates() {
   const [field, setfield] = React.useState("");
   const [val, setVal] = useState([""]);
-  const [sect, setSect] = useState([{ numeset: "", content: "" }]);
+  const [sect, setSect] = useState([{ sectionName: "", content: "" }]);
   const [selectedValue, setSelectedValue] = useState("");
   const [IndexCurentSec, setIndexCurentSec] = useState(0);
+  const [localEditorValue, setLocalEditorValue] = useState("");
+  const [valueOpt, setValueOpt] = useState("");
+  const [opt, setOpt] = useState([""]);
 
   const handleChange = (event: SelectChangeEvent) => {
     setfield(event.target.value);
+    setValueOpt(event.target.value);
   };
 
   const handleDelete = (index) => {
@@ -30,8 +34,13 @@ function Templates() {
   };
 
   const handleDeleteselection = (index) => {
-    const updatedValues = sect.filter((item, i) => i !== index);
-    setSect(updatedValues);
+    const updateSection = sect.filter((item, i) => i !== index);
+    setSect(updateSection);
+  };
+
+  const handleDeleteOpt = (index) => {
+    const updatedOpt = opt.filter((item, i) => i !== index);
+    setOpt(updatedOpt);
   };
 
   const handleChanges = (e, index) => {
@@ -42,31 +51,35 @@ function Templates() {
     setVal(updatedValues);
   };
 
+  const ChangeEventOpt = (e, index) => {
+    const updatedOpt = [...opt];
+
+    updatedOpt[index] = e.target.value;
+
+    setOpt(updatedOpt);
+  };
+
   const ChangeEvent = (e, index) => {
     const updatedSection = [...sect];
 
-    updatedSection[index].numeset = e.target.value;
+    updatedSection[index].sectionName = e.target.value;
 
     setSect(updatedSection);
   };
 
-  const handleChildClick = (childValue) => {
-    const updateEditor = [...sect];
-    console.log(IndexCurentSec);
-    console.log(sect);
-
-    updateEditor[IndexCurentSec] = {
-      ...updateEditor[IndexCurentSec],
-      content: childValue,
-    };
-    console.log(updateEditor);
-
-    setSect(updateEditor);
+  const handleChildClick = (updatedSect) => {
+    setSect(updatedSect);
   };
 
-  const HandlerAddSection = () => {
-    setIndexCurentSec(sect.length - 1);
-    setSect((preSteat) => [...preSteat, { numeset: "", content: "" }]);
+  const handleChangeSelectedSection = (currentIndex) => {
+    setIndexCurentSec(currentIndex);
+    setLocalEditorValue(sect[currentIndex].content);
+  };
+
+  const handleAddSection = () => {
+    setSect((prevState) => [...prevState, { sectionName: "", content: "" }]);
+    setIndexCurentSec(sect.length);
+    setLocalEditorValue("");
   };
 
   return (
@@ -135,7 +148,7 @@ function Templates() {
                         variant="outlined"
                         size="small"
                         onChange={(e) => ChangeEvent(e, index1)}
-                        onClick={() => setIndexCurentSec(index1)}
+                        onClick={() => handleChangeSelectedSection(index1)}
                       />
                     </div>
                     <Button
@@ -152,7 +165,7 @@ function Templates() {
             </div>
           </div>
           <div className="buttons">
-            <Button variant="outlined" size="small" onClick={HandlerAddSection}>
+            <Button variant="outlined" size="small" onClick={handleAddSection}>
               Add New
             </Button>
           </div>
@@ -218,22 +231,56 @@ function Templates() {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={1}>Text</MenuItem>
-                <MenuItem value={2}>Number</MenuItem>
-                <MenuItem value={3}>Decimal</MenuItem>
-                <MenuItem value={4}>Date</MenuItem>
-                <MenuItem value={5}>Single-choice</MenuItem>
-                <MenuItem value={6}>Multiple-choice</MenuItem>
+                <MenuItem value={"Text"}>Text</MenuItem>
+                <MenuItem value={"Number"}>Number</MenuItem>
+                <MenuItem value={"Decimal"}>Decimal</MenuItem>
+                <MenuItem value={"Date"}>Date</MenuItem>
+                <MenuItem value={"Single-choice"}>Single-choice</MenuItem>
+                <MenuItem value={"Multiple-choice"}>Multiple-choice</MenuItem>
               </Select>
             </FormControl>
           </div>
 
-          <div className="options">Options</div>
-          <div className="buttons">
-            <Button variant="outlined" size="small">
-              Add New
-            </Button>
-          </div>
+          {(valueOpt === "Single-choice" || valueOpt === "Multiple-choice") && (
+            <>
+              <div className="options">Options</div>
+              <div className="buttonsOpt">
+                <div className="inputs">
+                  {opt.map((item1, index) => {
+                    return (
+                      <div className="interor" key={index}>
+                        <div className="int2">
+                          <TextField
+                            id="outlined-basic"
+                            variant="outlined"
+                            size="small"
+                            onChange={(e) => ChangeEventOpt(e, index)}
+                          />
+                        </div>
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          onClick={() => handleDeleteOpt(index)}
+                          startIcon={<DeleteIcon />}
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="btn">
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={() => setOpt([...opt, ""])}
+                  >
+                    Add New
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
           <div className="document">
             Document keywords:
             <div className="it">
@@ -241,7 +288,12 @@ function Templates() {
             </div>
           </div>
           <div className="content">Content:</div>
-          <EditorComponent onChildClick={handleChildClick} />
+          <EditorComponent
+            sect={sect}
+            parentContent={localEditorValue}
+            currentIndexSection={IndexCurentSec}
+            onChildClick={handleChildClick}
+          />
         </div>
       </div>
       <div className="Create">

@@ -19,7 +19,6 @@ function Templates() {
   const [sect, setSect] = useState([""]);
   const [selectedValue, setSelectedValue] = useState("");
   const [edittor, setEditor] = useState([""]);
-  
 
   const handleChange = (event: SelectChangeEvent) => {
     setfield(event.target.value);
@@ -244,7 +243,6 @@ function Templates() {
           Create
         </Button>
       </div>
-
       <div className="spatiere"></div>
       <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
     </div>

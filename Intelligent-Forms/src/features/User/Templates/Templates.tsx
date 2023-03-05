@@ -3,13 +3,13 @@ import NavBar2 from "../NavBar2";
 import "./Templates.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import EditorComponent from "./Editor";
 import BasicSelect from "./Selecter";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -94,9 +94,9 @@ function Templates() {
                     </div>
                     <Button
                       variant="outlined"
-                      startIcon={<DeleteIcon />}
                       size="small"
                       onClick={() => handleDelete(index)}
+                      startIcon={<DeleteIcon />}
                     >
                       Delete
                     </Button>
@@ -130,9 +130,9 @@ function Templates() {
                     </div>
                     <Button
                       variant="outlined"
-                      startIcon={<DeleteIcon />}
                       size="small"
                       onClick={() => handleDeleteselection(index1)}
+                      startIcon={<DeleteIcon />}
                     >
                       Delete
                     </Button>

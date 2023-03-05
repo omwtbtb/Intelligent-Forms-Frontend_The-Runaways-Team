@@ -4,8 +4,8 @@ import "./UpdateForm.css";
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { Link } from 'react-router-dom';
 import QrCodeIcon from '@mui/icons-material/QrCode';
-import { Divider } from '@material-ui/core';
-import { Pagination } from "@mui/material";
+
+import { Divider, Pagination } from "@mui/material";
 
 function Update_Form() {
   return (

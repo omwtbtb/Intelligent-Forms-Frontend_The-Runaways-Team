@@ -1,16 +1,35 @@
-import React, { useState } from "react";
-import { Editor } from "primereact/editor";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import { Editor } from "primereact/editor";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import React, { useEffect, useState } from "react";
 
-function EditorComponent({ onChildClick }) {
+function EditorComponent({
+  sect,
+  parentContent,
+  currentIndexSection,
+  onChildClick,
+}) {
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    setText(parentContent);
+  }, [parentContent]);
+
+  useEffect(() => {
+    const updatedSect = [...sect];
+
+    updatedSect[currentIndexSection] = {
+      ...updatedSect[currentIndexSection],
+      content: text,
+    };
+
+    onChildClick(updatedSect);
+  }, [text]);
 
   const handleChange = (e) => {
     const htmlValue = e.htmlValue;
     setText(htmlValue);
-    onChildClick(htmlValue);
   };
 
   return (

@@ -16,7 +16,9 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function Templates() {
   const [field, setfield] = React.useState("");
   const [val, setVal] = useState([""]);
-  const [sect, setSect] = useState([{ sectionName: "", content: "" }]);
+  const [sect, setSect] = useState([
+    { sectionName: "", content: "", values: [""] },
+  ]);
   const [selectedValue, setSelectedValue] = useState("");
   const [IndexCurentSec, setIndexCurentSec] = useState(0);
   const [localEditorValue, setLocalEditorValue] = useState("");
@@ -30,6 +32,15 @@ function Templates() {
 
   const handleDelete = (index) => {
     const updatedValues = val.filter((item, i) => i !== index);
+    const updateSect = sect.map((item, i) => {
+      if (i === IndexCurentSec) {
+        const newValues = item.values.filter((item, i) => i !== index);
+        return { ...item, values: newValues };
+      } else {
+        return item;
+      }
+    });
+    setSect(updateSect);
     setVal(updatedValues);
   };
 
@@ -45,8 +56,11 @@ function Templates() {
 
   const handleChanges = (e, index) => {
     const updatedValues = [...val];
+    const updateSect = [...sect];
 
+    updateSect[IndexCurentSec].values[index] = e.target.value;
     updatedValues[index] = e.target.value;
+    console.log(sect);
 
     setVal(updatedValues);
   };
@@ -72,14 +86,20 @@ function Templates() {
   };
 
   const handleChangeSelectedSection = (currentIndex) => {
+    const UpdateValue = sect[currentIndex].values;
+    setVal([...UpdateValue]);
     setIndexCurentSec(currentIndex);
     setLocalEditorValue(sect[currentIndex].content);
   };
 
   const handleAddSection = () => {
-    setSect((prevState) => [...prevState, { sectionName: "", content: "" }]);
+    setSect((prevState) => [
+      ...prevState,
+      { sectionName: "", content: "", values: [""] },
+    ]);
     setIndexCurentSec(sect.length);
     setLocalEditorValue("");
+    setVal([""]);
   };
 
   return (

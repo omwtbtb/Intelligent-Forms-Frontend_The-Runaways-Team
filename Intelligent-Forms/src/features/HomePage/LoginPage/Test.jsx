@@ -27,7 +27,7 @@ function LoginForm() {
         id="pwd1"
       />
       <button className="SubmitButton" type="submit" id="submt">
-        Submit
+        Login
       </button>
     </div>
   );
@@ -73,7 +73,7 @@ function RegisterForm() {
         id="pwd2"
       />
       <button className="SubmitButton" type="submit" id="submt">
-        Submit
+       Register
       </button>
     </div>
   );
@@ -103,7 +103,7 @@ function Test() {
       <div className="main-login">
         <div className="Login-contain">
           <div className="Left-side">
-            <form onSubmit={handlesubmit}>
+            <form className="formClass" onSubmit={handlesubmit}>
               <button className="LoginButton" onClick={LoginClik}>
                 Login
               </button>

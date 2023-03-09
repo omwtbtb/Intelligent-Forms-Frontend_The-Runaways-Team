@@ -17,12 +17,8 @@ function EditorComponent({
   }, [parentContent]);
 
   useEffect(() => {
-    const updatedSect = [...sect];
-
-    updatedSect[currentIndexSection] = {
-      ...updatedSect[currentIndexSection],
-      content: text,
-    };
+    const updatedSect = { ...sect };
+    updatedSect.sections[currentIndexSection].content = text;
 
     onChildClick(updatedSect);
   }, [text]);

@@ -9,6 +9,7 @@ function NavBar2() {
         <img src="images/Logo.png" alt="Logo" />
         <div className="Inf1">Intelligent Forms</div>
       </div>
+      
       <Link to="/Create_Form" className="Home">
         Create Form
       </Link>

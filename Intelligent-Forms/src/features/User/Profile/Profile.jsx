@@ -1,4 +1,5 @@
 
+
 import React, { useState } from "react";
 import NavBar2 from "../NavBar2";
 import "./ProfilePage.css";
@@ -33,6 +34,7 @@ function Profile() {
 
 
  function RegisterForm() {
+
   return (
     <div className="RegisterForm">
       <label className="Label" htmlFor="accountName">
@@ -43,17 +45,21 @@ function Profile() {
         placeholder=" Enter your name"
         type="text"
         id="accountName"
+
         value = {activeUser?.name}
+
       />
       <label className="Label" htmlFor="address">
         Address
       </label>
       <input
         className="Field Focus"
+
         placeholder=" Enter your address"
         type="text"
         id="address"
         value = {activeUser?.address}
+
       />
       <label className="Label" htmlFor="email2">
         Email
@@ -63,9 +69,11 @@ function Profile() {
         placeholder=" Enter your email..."
         type="email"
         id="email2"
+
         value = {activeUser?.emailAddress}
       />
       {/* <label className="Label" htmlFor="pwd2">
+
         Password
       </label>
       <input
@@ -73,11 +81,15 @@ function Profile() {
         placeholder=" Enter password"
         type="password"
         id="pwd2"
+
       /> */}
+
       
     </div>
   );
 }
+
+
 
   function LoginClik() {
     setlogin(true);
@@ -120,13 +132,16 @@ function CancelClick(){
            
             <RegisterForm />
 
+
             
+
            
             <br></br>
             
             {
               !isEdit&&
             
+
        
                 <button className="ButtonEdit" onClick={EditClick}>
                 Edit
@@ -134,6 +149,7 @@ function CancelClick(){
             
 
           
+
             }
               {
                 isEdit && <>
@@ -145,6 +161,7 @@ function CancelClick(){
               
               </>
               }
+
                 
           </div>
      
@@ -156,6 +173,7 @@ function CancelClick(){
       <button onClick={logOut} className="ButtonEdit">
                 LogOut
               </button>
+
     
       <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
     

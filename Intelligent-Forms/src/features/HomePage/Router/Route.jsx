@@ -2,7 +2,10 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Profile from "../../User/Profile/Profile";
 import Templates from "../../User/Templates/Templates";
+
 import Update_Form from "../../User/UpdateForm/Update_Form";
+
+
 import FirstPage from "../FirstPage/FirstPage";
 import LoginPage from "../LoginPage/LoginPage";
 import Submissions_Forms from "../../User/Submissions/Submissions_Forms";
@@ -19,6 +22,7 @@ function AppRouter() {
         />
         <Route
           exact
+
           path={localStorage.getItem("isLogin") ?  "/Update_Form" : "/Contact_Us"}
           element={localStorage.getItem("isLogin") && <Update_Form />}
         />
@@ -26,6 +30,7 @@ function AppRouter() {
           exact
           path={localStorage.getItem("isLogin") &&  "/Submissions_Forms"}
           element={localStorage.getItem("isLogin") && <Submissions_Forms/>}
+
         />
         <Route
           exact

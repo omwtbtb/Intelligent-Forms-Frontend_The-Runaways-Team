@@ -13,7 +13,7 @@ function NavBar2() {
       <Link to="/Create_Form" className="Home">
         Create Form
       </Link>
-      <Link to="/Update_Form" className="Contact-Us">
+      <Link to="/Submissions_Forms" className="Contact-Us">
         Update Form
       </Link>
       <div className="Login_Register">

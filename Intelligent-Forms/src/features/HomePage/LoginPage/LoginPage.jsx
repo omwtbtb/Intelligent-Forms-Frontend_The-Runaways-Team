@@ -62,8 +62,11 @@ const signIn = async()=>{
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+
       <button className="SubmitButton" type="submit" id="submt" onClick={signIn}>
         Sign In
+
+      
       </button>
     </div>
   );
@@ -144,8 +147,11 @@ const signUp = async()=>{
         value={registerPassword}
         onChange={(e) => settingPassword(e.target.value)}
       />
+
       <button onClick={signUp} className="SubmitButton" type="submit" id="submt">
        Sign Up
+
+
       </button>
     </div>
   );

@@ -99,13 +99,15 @@ body {
   .Input{
     display: block;
     border: none;
-    height: 1.5rem;
+    height: 2rem;
     width: 90%;
     margin: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     padding: 0.2rem;
     border-radius: 15px;
     margin: 15px;
+    background-color: #B0C2E8;
+    font-size: 15px;
    
   }
   .Focus{
@@ -122,9 +124,9 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  padding: 0.5rem 1rem
-rem
-;
+  padding: 0.5rem 1rem;
+  font-size: 17px;
+
 }
 
 .RegisterButton {
@@ -134,9 +136,9 @@ rem
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  padding: 0.5rem 1rem
-rem
-;
+  padding: 0.5rem 1rem;
+  font-size: 17px;
+
 }
 
 .Label{
@@ -150,13 +152,16 @@ rem
   font-size: 15px;
 }
 .SubmitButton{
-  width: 100%;
-  background-color:#d1def5 ;
-  color: black;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0.5rem 1rem;
+  margin-top: 10px;
+    margin-left: 30%;
+    background-color: #B0C2E8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 6px;
+    width: 20%;
+    border-radius: 10px;
+    border: groove;
+    font-size: 15px;
 }
 .Hover{
   outline: 0.5px solid rgb(99, 187, 222);
@@ -220,4 +225,6 @@ rem
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
-  
+  .formClass{
+    display: block !important;
+  }

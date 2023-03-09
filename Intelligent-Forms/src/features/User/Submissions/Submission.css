@@ -1,21 +1,37 @@
-.Card {
+/* .Card {
     border: 1px solid #aabee6;
     background-color: #c0cfee;
     border-radius: 15px;
     margin-left: 150px;
     margin-right: 150px;
-    display: flex;
+   
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     padding-bottom: 100px;
     margin-top: 30px;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(58, 57, 57);
-    /* resize: both; */
-    overflow-x: auto;
    
 }
+   */
+
+
+.Tabel{
+    border: 1px solid #aabee6;
+    background-color: #c0cfee;
+    border-radius: 15px;
+    margin-left: 150px;
+    margin-right: 150px;
+    
+  flex-direction: column;
   
+  padding: 20px;
+  padding-bottom: 100px;
+  margin-top: 30px;
+  
+}
+
+
 .Nav-Bar {
     padding: 20px;
     margin: 0 auto;
@@ -77,37 +93,21 @@
     background-color: black;
 }
 
-.Linie1{
-    border: none;
-    margin-left: 90px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    margin-right: 90px;
-    background-color: #473f65;
-}
+
 
 .container{
-    height: 30px;
+  height: 35px;
     margin-left: 210px;
     display: flex;
     justify-content: left;
     align-items: normal;
 }
 
-.Text{
+/* .Text{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #473f65;
     font-size: xx-small;
-}
-
-.buttonBack{
-    margin-left: 200px;
-    display: flex;
-    justify-content: left;
-    height: -30px;
-    align-items: normal;
-}
-
+} */
 .Delimitation {
     background-color: #473f65;
     display: flex;
@@ -119,3 +119,86 @@
     right: 0px;
     bottom: 0px;
 }
+.Margin{
+    
+    margin-left: 0px;
+    padding-top: 10px;
+    
+}
+.Line{
+    display: block;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    overflow-x:auto;
+  }
+  
+ table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th,
+  td {
+    /* border: 1px solid #ffffff; */
+    text-align: center;
+    padding: 8px;
+    font-size: 15px;
+  }
+  
+  /* th {
+    background-color:#aabee6;
+  }
+   */
+  /* td {
+    background-color: #aabee6;
+  } */
+  
+  form {
+    display: flex;
+    gap: 5px;
+  }
+  
+  form td:last-child {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  form * {
+    font-size: 28px;
+  }
+
+  .Apt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Border{
+  
+    background-color: #473f65;
+  }
+
+  .Lini1{
+    border: none;
+    margin-left: 90px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-right: 90px;
+    background-color: #473f65;
+
+  }
+  .Style{
+    padding-left: 35px;
+    padding-right: 35px;
+   
+    font-size: 17px;
+    margin-bottom: 10%;
+    padding-bottom: 20%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #473f65;
+  
+  }

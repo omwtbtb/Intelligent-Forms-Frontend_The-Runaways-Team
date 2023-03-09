@@ -12,9 +12,9 @@ function NavBar() {
       <Link to="/" className="Home">
         Home
       </Link>
-      <Link to="/Contact_Us" className="Contact-Us">
+      {/* <Link to="/Contact_Us" className="Contact-Us">
         Contact Us
-      </Link>
+      </Link> */}
       <div className="Login_Register">
         <img src="images/Login.png" alt="Logo" />
         <Link to="/Login_Register" className="Inf2">

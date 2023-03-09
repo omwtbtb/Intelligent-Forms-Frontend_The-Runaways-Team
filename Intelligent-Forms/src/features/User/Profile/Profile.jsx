@@ -3,9 +3,36 @@ import React, { useState } from "react";
 import NavBar2 from "../NavBar2";
 import "./ProfilePage.css";
 import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp';
+import useSWR from 'swr'
+import { readSingleUserAPI } from "../../API/UserAPI/UserAPI";
 
 
-function RegisterForm() {
+
+function logOut(){
+  localStorage.clear()
+  window.location.href="/"
+}
+
+function Profile() {
+
+ 
+
+  const [login, setlogin] = useState(true);
+  const [register, setregister] = useState(false);
+  const[isEdit, setEdit] = useState(false);
+  const[name, setName] = useState('')
+  const[address, setAddress] = useState('')
+  const[email, setEmail] = useState('')
+
+  const [activeUserID, setActiveUserID] = useState(
+    JSON.parse(JSON.stringify(localStorage.getItem('userId'))))
+
+
+  const{data:activeUser}= useSWR(activeUserID && localStorage.getItem('userId'), readSingleUserAPI)
+  console.log(localStorage.getItem("userId"))
+
+
+ function RegisterForm() {
   return (
     <div className="RegisterForm">
       <label className="Label" htmlFor="accountName">
@@ -16,15 +43,17 @@ function RegisterForm() {
         placeholder=" Enter your name"
         type="text"
         id="accountName"
+        value = {activeUser?.name}
       />
       <label className="Label" htmlFor="address">
         Address
       </label>
       <input
         className="Field Focus"
-        placeholder=" Enter your name"
+        placeholder=" Enter your address"
         type="text"
         id="address"
+        value = {activeUser?.address}
       />
       <label className="Label" htmlFor="email2">
         Email
@@ -34,8 +63,9 @@ function RegisterForm() {
         placeholder=" Enter your email..."
         type="email"
         id="email2"
+        value = {activeUser?.emailAddress}
       />
-      <label className="Label" htmlFor="pwd2">
+      {/* <label className="Label" htmlFor="pwd2">
         Password
       </label>
       <input
@@ -43,17 +73,11 @@ function RegisterForm() {
         placeholder=" Enter password"
         type="password"
         id="pwd2"
-      />
+      /> */}
       
     </div>
   );
 }
-
-
-function Profile() {
-  const [login, setlogin] = useState(true);
-  const [register, setregister] = useState(false);
-  const[isEdit, setEdit] = useState(false);
 
   function LoginClik() {
     setlogin(true);
@@ -96,16 +120,20 @@ function CancelClick(){
            
             <RegisterForm />
 
-            <label className="Margin">Change password </label>
+            
            
             <br></br>
             
             {
               !isEdit&&
             
-            <button className="ButtonEdit" onClick={EditClick}>
+       
+                <button className="ButtonEdit" onClick={EditClick}>
                 Edit
               </button>
+            
+
+          
             }
               {
                 isEdit && <>
@@ -117,11 +145,17 @@ function CancelClick(){
               
               </>
               }
+                
           </div>
+     
           
           
         </div>
+        
       </div>
+      <button onClick={logOut} className="ButtonEdit">
+                LogOut
+              </button>
     
       <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
     

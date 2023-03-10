@@ -18,7 +18,7 @@ function NavBar() {
       <div className="Login_Register">
         <img src="images/Login.png" alt="Logo" />
         <Link to="/Login_Register" className="Inf2">
-          Login/Register
+         Your account
         </Link>
       </div>
     </div>

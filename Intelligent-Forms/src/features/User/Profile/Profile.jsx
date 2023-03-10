@@ -1,80 +1,175 @@
 import React, { useState } from "react";
-import NavBar2 from "../NavBar2";
-import "./ProfilePage.css";
-import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
-import useSWR from "swr";
-import { readSingleUserAPI } from "../../API/UserAPI/UserAPI";
+import NavBar from "../FirstPage/NavBar";
+import "./LoginPage.css";
+import { loginUserAPI } from "../../API/UserAPI/UserAPI";
+import { createUserAPI } from "../../API/UserAPI/UserAPI";
+import { Button } from 'primereact/button';
 
-function logOut() {
-  localStorage.clear();
-  window.location.href = "/";
+import Stack from "@mui/material/Stack";
+// import Button from "@mui/material/Button";
+
+function LoginForm() {
+const[email, setEmail] = useState('')
+const[password, setPassword] = useState('')
+
+const signIn = async()=>{
+  const LoginCredential ={
+    "emailAddress": email,
+    "password": password
+  };
+ 
+
+  try{
+        const response = await loginUserAPI(LoginCredential)
+        console.log(response.data)
+        if(response.status==200)
+        {
+        localStorage.setItem('isLogin',true)
+        localStorage.setItem('userId',response.data.id)
+        console.log(localStorage)
+        window.location.href = "/Update_Form"
+        }
+
+  }
+  catch(error) {
+    console.error(error);
+  }
+
 }
 
-function Profile() {
-  const [login, setlogin] = useState(true);
-  const [register, setregister] = useState(false);
-  const [isEdit, setEdit] = useState(false);
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [email, setEmail] = useState("");
 
-  const [activeUserID] = useState(
-    JSON.parse(JSON.stringify(localStorage.getItem("userId")))
-  );
 
-  const { data: activeUser } = useSWR(
-    activeUserID && localStorage.getItem("userId"),
-    readSingleUserAPI
-  );
-  console.log(localStorage.getItem("userId"));
-
-  function RegisterForm() {
-    return (
-      <div className="RegisterForm">
-        <label className="Label" htmlFor="accountName">
-          Account Name
-        </label>
-        <input
-          className="Field Focus"
-          placeholder=" Enter your name"
-          type="text"
-          id="accountName"
-          value={activeUser?.name}
-        />
-        <label className="Label" htmlFor="address">
-          Address
-        </label>
-        <input
-          className="Field Focus"
-          placeholder=" Enter your address"
-          type="text"
-          id="address"
-          value={activeUser?.address}
-        />
-        <label className="Label" htmlFor="email2">
-          Email
-        </label>
-        <input
-          className="Field Focus"
-          placeholder=" Enter your email..."
-          type="email"
-          id="email2"
-          value={activeUser?.emailAddress}
-        />
-        {/* <label className="Label" htmlFor="pwd2">
-
+  return (
+    <div className="LoginForm">
+      <label className="Label" htmlFor="email1">
+        Email
+      </label>
+      <input
+      required
+        className="Input Focus"
+        placeholder=" Enter your email..."
+        type="email"
+        id="email1"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <label className="Label" htmlFor="pwd1">
         Password
       </label>
       <input
-        className="Field Focus"
+      required
+        className="Input Focus"
+        placeholder=" Enter password"
+        type="password"
+        id="pwd1"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button className="SubmitButton Hover" type="submit" id="submt" onClick={signIn}>
+        LogIn
+
+      
+      </button>
+      
+    </div>
+  );
+}
+
+function RegisterForm() {
+  const[registerName, settingName]= useState('')
+const[registerEmail, settingEmail] = useState('')
+const[registerAddress, settingAddress]= useState('')
+const[registerPassword, settingPassword]= useState('')
+
+function registered()
+{
+  window.location.href='/Login_Register'
+}
+
+const signUp = async()=>{
+  const RegisterCredential ={
+   "name": registerName,
+   "address": registerAddress,
+   "emailAddress": registerEmail,
+   "password": registerPassword
+  }
+  try{
+      const response= await createUserAPI(RegisterCredential)
+      if(response.status==200)
+      {
+        registered()
+      }
+  }
+  catch(error){
+      console.error(error)
+  }
+}
+  return (
+    <div className="RegisterForm">
+      <label className="Label" htmlFor="accountName">
+        Account Name
+      </label>
+      <input
+      required
+        className="Input Focus"
+        placeholder=" Enter your name"
+        type="text"
+        id="accountName"
+        value={registerName}
+        onChange={(e) => settingName(e.target.value)}
+      />
+      <label className="Label" htmlFor="address">
+        Address
+      </label>
+      <input
+      required
+        className="Input Focus"
+        placeholder=" Enter your addresss"
+        type="text"
+        id="address"
+        value={registerAddress}
+        onChange={(e) => settingAddress(e.target.value)}
+      />
+      <label className="Label" htmlFor="email2">
+        Email
+      </label>
+      <input
+      required
+        className="Input Focus"
+        placeholder=" Enter your email..."
+        type="email"
+        id="email2"
+        value={registerEmail}
+        onChange={(e) => settingEmail(e.target.value)}
+      />
+      <label className="Label" htmlFor="pwd2">
+        Password
+      </label>
+      <input
+      required
+        className="Input Focus"
         placeholder=" Enter password"
         type="password"
         id="pwd2"
+        value={registerPassword}
+        onChange={(e) => settingPassword(e.target.value) }
+      />
 
-      /> */}
-      </div>
-    );
-  }
+      <button onClick={signUp} className="SubmitButton" type="submit" id="submt">
+       Register
+
+
+      </button>
+      
+    </div>
+  );
+}
+
+function Test() {
+  const [login, setlogin] = useState(true);
+  const [register, setregister] = useState(false);
+
 
   function LoginClik() {
     setlogin(true);
@@ -85,58 +180,40 @@ function Profile() {
     setlogin(false);
     setregister(true);
   }
-  function EditClick() {
-    setEdit(true);
-  }
 
-  function CancelClick() {
-    setEdit(false);
-  }
   const handlesubmit = (event) => {
     event.preventDefault();
   };
 
   return (
-    <div className="Profile">
-      <NavBar2 />
+    <div className="Test">
+      <NavBar />
       <div className="main-login">
         <div className="Login-contain">
           <div className="Left-side">
-            <form onSubmit={handlesubmit}>
-              <div className="Poza">
-                <img src="images/ProfilePage.png" alt="Logo" />
-              </div>
-            </form>
-            <label className="Mpf">My Profile </label>
-          </div>
-          <div className="Right-side Padding">
-            <RegisterForm />
-
-            <br></br>
-
-            {!isEdit && (
-              <button className="ButtonEdit" onClick={EditClick}>
-                Edit
+            <form className="formClass" onSubmit={handlesubmit}>
+              <button className="LoginButton" onClick={LoginClik}>
+                Login
               </button>
-            )}
-            {isEdit && (
-              <>
-                <button className="ButtonCancel" onClick={CancelClick}>
-                  Cancel
-                </button>
-                <button className=" ButtonSave">Save</button>
-              </>
-            )}
+              <button className="RegisterButton" onClick={RegisterClick}>
+                Register
+              </button>
+              {login && <LoginForm />}
+
+              {register && <RegisterForm />}
+            </form>
+          </div>
+          <div className="Right-side">
+            <div className="Poza">
+              {login && <img src="images/LoginPage.png" alt="Logo" />}
+
+              {register && <img src="images/Register.png" alt="Logo" />}
+            </div>
           </div>
         </div>
       </div>
-      <button onClick={logOut} className="ButtonEdit">
-        LogOut
-      </button>
-
-      <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
     </div>
   );
 }
 
-export default Profile;
+export default Test;

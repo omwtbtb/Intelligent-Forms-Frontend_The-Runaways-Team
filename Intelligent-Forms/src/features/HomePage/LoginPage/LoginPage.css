@@ -163,9 +163,10 @@ body {
     border: groove;
     font-size: 15px;
 }
-.Hover{
+.SubmitButton:Hover{
   outline: 0.5px solid rgb(99, 187, 222);
   box-shadow: 2px 2px 9px -1px rgb(99, 187, 222);
+  opacity: 0.8;
 }
   .Right-side{
     margin: 2rem 2rem;

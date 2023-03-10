@@ -10,6 +10,12 @@
     border-radius: 7px;
     border: groove;
 }
+
+.ButtonEdit:hover{
+  outline: 0.5px solid rgb(99, 187, 222);
+  box-shadow: 2px 2px 9px -1px rgb(99, 187, 222);
+  opacity: 0.8;
+}
 .ButtonSave {
     margin-left: 5px;
     margin-top: 10px;

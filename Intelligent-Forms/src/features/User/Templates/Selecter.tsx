@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-function BasicSelect() {
+function BasicSelect({ parentCont, valUpdate }) {
   const [identifity, setIdentifity] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
     setIdentifity(event.target.value as string);
   };
+
+  useEffect(() => {
+    parentCont(identifity);
+  }, [identifity]);
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -21,10 +25,21 @@ function BasicSelect() {
           id="demo-simple-select"
           onChange={handleChange}
           size="small"
+          value={identifity ? identifity : "None"}
         >
-          <MenuItem value={1}>Identify Card</MenuItem>
-          <MenuItem value={2}>Passport card</MenuItem>
+
+          <MenuItem value={"None"}>None</MenuItem>
+
+          <MenuItem value={"Identify_card"}>Identify card</MenuItem>
+          <MenuItem value={"Passport_card"}>Passport card</MenuItem>
+          <MenuItem value={"Birth_certificate"}>Birth certificate</MenuItem>
+          <MenuItem value={"Vehicle_Identity_card"}>
+            Vehicle Identity card
+          </MenuItem>
+          <MenuItem value={"Any_document"}>Any document</MenuItem>
         </Select>
+        <div>
+    </div>
       </FormControl>
     </Box>
   );

@@ -7,6 +7,7 @@ function FormActions() {
   {
    window.location.href="/Submissions_Forms"
   }
+
   return (
     <div>
       <div className="Card1">
@@ -18,6 +19,7 @@ function FormActions() {
     <button className="EditButton" type="edit" id="editt">Edit Form</button>
     <button className="DeleteButton" type="delete" id="deletee">Delete Form</button>
     <button  className="ViewButton" type="view" id="view1" onClick={viewSubmissions}>View Subbmissions</button>
+
     </div>
   );
 }

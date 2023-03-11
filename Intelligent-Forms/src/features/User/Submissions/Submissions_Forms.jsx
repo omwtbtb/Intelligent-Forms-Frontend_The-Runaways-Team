@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import QrCodeIcon from '@mui/icons-material/QrCode';
 import { Divider, Pagination } from "@mui/material";
 
+import 'primeicons/primeicons.css';
+
+
 
 function Submissions_Forms() {
     return (
@@ -41,7 +44,8 @@ function Submissions_Forms() {
                           <td>Custome</td>
                           <td>Custome</td>
                           <td>Custome</td>
-                          <td>Icon</td>
+
+                          <td><i className="pi pi-download icon" style={{ fontSize: '1rem' }}></i></td>
                       </tr>
                       
                   </tbody>

@@ -49,7 +49,7 @@ function Templates() {
   const [valField, setValField] = useState("");
   const [valDatavalidation, setvalDatavalidation] = useState(30);
   const [valScan, setValScan] = useState("");
-  const [valTitl, setValTitl] = useState("");
+
 
   useEffect(() => {
     const updateSet = { ...sect };
@@ -120,7 +120,7 @@ function Templates() {
   };
 
   const HandlerTitle = (e) => {
-    setValTitl(e.target.value);
+
     const updatedSect = { ...sect };
     updatedSect.formTitle = e.target.value;
     setSect(updatedSect);
@@ -242,7 +242,7 @@ function Templates() {
     setValDocument("");
     setValField("None");
     setValScan("");
-    setValTitl("");
+
   };
 
   return (
@@ -251,20 +251,22 @@ function Templates() {
       <div className="Card">
         <div className="container1">
           <div className="Title">
-            Titlul:
+            Title:</div>
+            <br/>
             <div className="TextField">
               <TextField
                 id="outlined-basic"
-                label="Title"
                 variant="outlined"
                 size="small"
-                value={valTitl}
-                onChange={(e) => HandlerTitle(e)}
+
+                placeholder="e.g.: name of the form"
+                value={placeHolder_key}
+                onChange={(e) => HandlerChangePlaceHoder(e)}
               />
             </div>
-          </div>
+          
           <div className="text">
-            Dynamic Fields
+            Dynamic Fields:
             <div className="inputs">
               {val.map((item, index) => {
                 return (
@@ -273,6 +275,7 @@ function Templates() {
                       <TextField
                         id="outlined-basic"
                         variant="outlined"
+                        placeholder="e.g.: name, cnp etc."
                         value={item}
                         size="small"
                         onChange={(e) => handleChanges(e, index)}
@@ -328,7 +331,7 @@ function Templates() {
             </Button>
           </div>
           <div className="text">
-            Sectiuni
+            Sections:
             <div className="inputs">
               {sect.sections.map((item1, index1) => {
                 return (
@@ -338,6 +341,7 @@ function Templates() {
                         id="outlined-basic"
                         variant="outlined"
                         size="small"
+                        placeholder="e.g.: name of the section"
                         onChange={(e) => ChangeEvent(e, index1)}
                         onClick={() => handleChangeSelectedSection(index1)}
                       />
@@ -383,7 +387,7 @@ function Templates() {
           </div>
 
           <div className="scan_document">
-            Scan Document Type:
+            Scan document type:
             <div className="it">
               <BasicSelect parentCont={ChangeScan} valUpdate={valScan} />
             </div>
@@ -404,12 +408,15 @@ function Templates() {
             </div>
           </div>
           <div className="Placeholder">
-            Placeholder keywords:
+            Placeholder keyword:
             <div className="it1">
               <TextField
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
+
+                placeholder="e.g.: first_name, last_name etc."
+
                 value={placeHolder_key}
                 onChange={(e) => HandlerChangePlaceHoder(e)}
               />
@@ -432,11 +439,10 @@ function Templates() {
                 onChange={handleChange}
                 autoWidth
                 size="small"
-                value={valField}
+
+                value={valField ? valField: "None"}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
+                <MenuItem value={"None"}>None</MenuItem>
                 <MenuItem value={"Text"}>Text</MenuItem>
                 <MenuItem value={"Number"}>Number</MenuItem>
                 <MenuItem value={"Decimal"}>Decimal</MenuItem>
@@ -452,7 +458,7 @@ function Templates() {
             sect.sections[IndexCurentSec]?.fields[IndexDynamicFields]
               ?.fieldType === "Multiple-choice") && (
             <>
-              <div className="options">Options</div>
+              <div className="options">Options:</div>
               <div className="buttonsOpt">
                 <div className="inputs">
                   {opt.map((item1, index) => {
@@ -498,6 +504,8 @@ function Templates() {
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
+
+                placeholder="e.g.: cnp, social number etc."
                 value={valDocument}
                 onChange={HandlerChangeDocument}
               />

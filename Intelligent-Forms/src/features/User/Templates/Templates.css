@@ -30,13 +30,14 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  padding-left: 100px;
-  font-family: cursive;
+  margin-bottom: -18px;
+  padding-left: 19px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .TextField {
-  margin-left: 10px;
+  margin-left: -57px;
+  margin-bottom: 20px;
 }
 
 .buttons {
@@ -65,8 +66,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: cursive;
-  margin-left: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: -10px;
   padding-top: 20px;
 }
 
@@ -75,12 +76,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: cursive;
-  margin-left: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: 62px;
 }
 
 .text {
-  font-family: cursive;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .it3 {
   margin-left: 10px;
@@ -96,18 +97,18 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  font-family: cursive;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin-left: 20px;
 }
 
 .Placeholder {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   margin-bottom: 20px;
-  margin-right: 100px;
-  font-family: cursive;
+  margin-right: 178px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .it1 {
@@ -117,24 +118,24 @@
 .madatory {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   margin-bottom: 20px;
-  margin-left: 50px;
-  font-family: cursive;
+  margin-left: 160px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .field_type {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   margin-bottom: 20px;
-  margin-left: 50px;
-  font-family: cursive;
+  margin-left: 170px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .options {
-  font-family: cursive;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .document {
   display: flex;
@@ -142,8 +143,8 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  padding-right: 80px;
-  font-family: cursive;
+  padding-right: 75px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .interor {
@@ -157,7 +158,7 @@
   margin-right: 10px;
 }
 .content {
-  font-family: cursive;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .int3 {
   margin-left: 100px;

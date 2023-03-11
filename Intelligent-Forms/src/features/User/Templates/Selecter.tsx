@@ -25,7 +25,11 @@ function BasicSelect({ parentCont, valUpdate }) {
           id="demo-simple-select"
           onChange={handleChange}
           size="small"
+          value={identifity ? identifity : "None"}
         >
+
+          <MenuItem value={"None"}>None</MenuItem>
+
           <MenuItem value={"Identify_card"}>Identify card</MenuItem>
           <MenuItem value={"Passport_card"}>Passport card</MenuItem>
           <MenuItem value={"Birth_certificate"}>Birth certificate</MenuItem>
@@ -34,6 +38,8 @@ function BasicSelect({ parentCont, valUpdate }) {
           </MenuItem>
           <MenuItem value={"Any_document"}>Any document</MenuItem>
         </Select>
+        <div>
+    </div>
       </FormControl>
     </Box>
   );

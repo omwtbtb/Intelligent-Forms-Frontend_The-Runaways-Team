@@ -216,7 +216,7 @@ function Profile() {
 
     
 
-      <div className="Delimitation">Â© 2023 INTELLIGENT FORMS</div>
+      <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
     </div>
   );
 }

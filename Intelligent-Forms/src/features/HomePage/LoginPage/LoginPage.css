@@ -152,7 +152,8 @@ body {
   font-size: 15px;
 }
 .SubmitButton{
-  margin-top: 10px;
+
+    margin-top: 10px;
     margin-left: 30%;
     background-color: #B0C2E8;
     cursor: pointer;

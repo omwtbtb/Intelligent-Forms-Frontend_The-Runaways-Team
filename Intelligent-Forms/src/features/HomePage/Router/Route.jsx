@@ -43,7 +43,7 @@ function AppRouter() {
             localStorage.getItem("isLogin") ? <Templates /> : <LoginPage />
           }
         />
-        <Route exact path={"/FillForm/:id"} element={<FillForm />} />
+        <Route path={"/FillForm/:id"} element={<FillForm />} />
       </Routes>
     </Router>
   );

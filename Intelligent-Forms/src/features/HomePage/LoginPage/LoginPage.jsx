@@ -3,9 +3,10 @@ import NavBar from "../FirstPage/NavBar";
 import "./LoginPage.css";
 import { loginUserAPI } from "../../API/UserAPI/UserAPI";
 import { createUserAPI } from "../../API/UserAPI/UserAPI";
+import { Button } from 'primereact/button';
 
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 
 function LoginForm() {
 const[email, setEmail] = useState('')
@@ -44,6 +45,7 @@ const signIn = async()=>{
         Email
       </label>
       <input
+      required
         className="Input Focus"
         placeholder=" Enter your email..."
         type="email"
@@ -55,6 +57,7 @@ const signIn = async()=>{
         Password
       </label>
       <input
+      required
         className="Input Focus"
         placeholder=" Enter password"
         type="password"
@@ -63,11 +66,12 @@ const signIn = async()=>{
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button className="SubmitButton" type="submit" id="submt" onClick={signIn}>
-        Sign In
+      <button className="SubmitButton Hover" type="submit" id="submt" onClick={signIn}>
+        LogIn
 
       
       </button>
+      
     </div>
   );
 }
@@ -107,6 +111,7 @@ const signUp = async()=>{
         Account Name
       </label>
       <input
+      required
         className="Input Focus"
         placeholder=" Enter your name"
         type="text"
@@ -118,6 +123,7 @@ const signUp = async()=>{
         Address
       </label>
       <input
+      required
         className="Input Focus"
         placeholder=" Enter your addresss"
         type="text"
@@ -129,6 +135,7 @@ const signUp = async()=>{
         Email
       </label>
       <input
+      required
         className="Input Focus"
         placeholder=" Enter your email..."
         type="email"
@@ -140,19 +147,21 @@ const signUp = async()=>{
         Password
       </label>
       <input
+      required
         className="Input Focus"
         placeholder=" Enter password"
         type="password"
         id="pwd2"
         value={registerPassword}
-        onChange={(e) => settingPassword(e.target.value)}
+        onChange={(e) => settingPassword(e.target.value) }
       />
 
       <button onClick={signUp} className="SubmitButton" type="submit" id="submt">
-       Sign Up
+       Register
 
 
       </button>
+      
     </div>
   );
 }

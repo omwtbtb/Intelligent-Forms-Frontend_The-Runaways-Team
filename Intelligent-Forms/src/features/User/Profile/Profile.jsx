@@ -3,6 +3,7 @@ import NavBar2 from "../NavBar2";
 import "./ProfilePage.css";
 import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
 import useSWR from "swr";
+
 import { readSingleUserAPI } from "../../API/UserAPI/UserAPI";
 
 function logOut() {
@@ -63,6 +64,101 @@ function Profile() {
         />
         {/* <label className="Label" htmlFor="pwd2">
 
+
+
+function logOut(){
+  localStorage.clear()
+  window.location.href="/"
+<<<<<<< Updated upstream
+>>>>>>> b45f571609fb4158d43124e32e40ac14953a3cce
+}
+
+function Profile() {
+  const [login, setlogin] = useState(true);
+  const [register, setregister] = useState(false);
+  const [isEdit, setEdit] = useState(false);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [activeUserID] = useState(
+    JSON.parse(JSON.stringify(localStorage.getItem("userId")))
+  );
+
+  const { data: activeUser } = useSWR(
+    activeUserID && localStorage.getItem("userId"),
+    readSingleUserAPI
+  );
+  console.log(localStorage.getItem("userId"));
+=======
+}
+
+function Profile() {
+
+ 
+
+  const [login, setlogin] = useState(true);
+  const [register, setregister] = useState(false);
+  const[isEdit, setEdit] = useState(false);
+  const[name, setName] = useState('')
+  const[address, setAddress] = useState('')
+  const[email, setEmail] = useState('')
+
+  const [activeUserID, setActiveUserID] = useState(
+    JSON.parse(JSON.stringify(localStorage.getItem('userId'))))
+
+
+>>>>>>> Stashed changes
+  const{data:activeUser}= useSWR(activeUserID && localStorage.getItem('userId'), readSingleUserAPI)
+  console.log(localStorage.getItem("userId"))
+
+
+ function ProfilePageForm() {
+
+  return (
+    <div className="ProfilePageForm">
+      <label className="Label" htmlFor="accountName">
+        Account Name
+      </label>
+      <input
+        className="Field Focus"
+        placeholder=" Enter your name"
+        type="text"
+        id="accountName"
+
+        value = {activeUser?.name}
+
+      />
+      <label className="Label" htmlFor="address">
+        Address
+      </label>
+      <input
+        className="Field Focus"
+
+        placeholder=" Enter your address"
+        type="text"
+        id="address"
+        value = {activeUser?.address}
+
+      />
+      <label className="Label" htmlFor="email2">
+        Email
+      </label>
+      <input
+        className="Field Focus"
+        placeholder=" Enter your email..."
+        type="email"
+        id="email2"
+
+        value = {activeUser?.emailAddress}
+      />
+      {/* <label className="Label" htmlFor="pwd2">
+<<<<<<< Updated upstream
+>>>>>>> b45f571609fb4158d43124e32e40ac14953a3cce
+=======
+>>>>>>> Stashed changes
+
+
         Password
       </label>
       <input
@@ -70,6 +166,7 @@ function Profile() {
         placeholder=" Enter password"
         type="password"
         id="pwd2"
+
 
       /> */}
       </div>
@@ -113,27 +210,12 @@ function Profile() {
             <RegisterForm />
 
             <br></br>
-
-            {!isEdit && (
-              <button className="ButtonEdit" onClick={EditClick}>
-                Edit
-              </button>
-            )}
-            {isEdit && (
-              <>
-                <button className="ButtonCancel" onClick={CancelClick}>
-                  Cancel
-                </button>
-                <button className=" ButtonSave">Save</button>
-              </>
-            )}
+            <button onClick={logOut} className="ButtonEdit">
+              LogOut
+            </button>
           </div>
         </div>
       </div>
-      <button onClick={logOut} className="ButtonEdit">
-        LogOut
-      </button>
-
       <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
     </div>
   );

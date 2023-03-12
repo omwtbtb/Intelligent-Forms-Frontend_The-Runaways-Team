@@ -201,4 +201,13 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #473f65;
   
+
+  }
+
+  .icon:hover{
+    transition: all 0.1s ease;
+    box-shadow: 3px 3px 10px -2px rgb(99, 187, 222);
+    opacity: 0.8;
+    cursor: pointer;
+    padding: 2px;
   }

@@ -15,6 +15,22 @@
     overflow-x: auto;
    
 }
+
+
+.ActionsButton{
+
+    background-color: #B0C2E8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 6px;
+    border-radius: 10px;
+    border: groove;
+    font-size: 15px;
+}
+.ActionsButton:Hover{
+  outline: 0.5px solid rgb(99, 187, 222);
+  opacity: 0.8;
+}
   
 .Nav-Bar {
     padding: 20px;
@@ -53,6 +69,7 @@
     margin-right: 20px;
     margin-top: 25px;
     padding: auto;
+    flex:content;
 }
 
 .Link{

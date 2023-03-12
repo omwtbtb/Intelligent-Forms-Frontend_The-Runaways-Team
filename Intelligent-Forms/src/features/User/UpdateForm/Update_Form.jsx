@@ -2,14 +2,72 @@ import React, { useState } from "react";
 import NavBar2 from "../NavBar2";
 import "./UpdateForm.css";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import { Link } from "react-router-dom";
-import QrCodeIcon from "@mui/icons-material/QrCode";
 import { Divider, Pagination } from "@mui/material";
 import FormActions from "./FormActions";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import { getTemplatesByUserId } from "../../API/TemplateAPI/TemplateAPI";
+import { useEffect } from "react";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
+
+const rowsPerPage = 4;
+
+
+
+function MyTable({data, OnAction}){
+  const [page, setPage] = React.useState(0);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const start = page * rowsPerPage;
+  const end = start + rowsPerPage;
+  const rows = data.slice(start, end);
+
+  return (
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow>
+              <TableCell key={"formTitle"} align="center">{"Form Title"}</TableCell>
+              <TableCell key={"fillFormLink"} align="center">{"Fill Form Link"}</TableCell>
+              <TableCell key={"formActions"} align="center">{"Actions"}</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id}>
+                <TableCell key={'formTitle'} align="center">{[<PictureAsPdfIcon key={"pdf"}/>, row.formTitle]}</TableCell>
+                <TableCell  key={'fillFormLink'} align="center">{<a href={`www.intelligentforms.azurewebistes.net/FillForm/${row.id}`}>{`intelligentforms.azurewebistes.net/FillForm/${row.id}`}</a>}</TableCell>
+                <TableCell key={'formActions'} align="center">{<button onClick={OnAction} className="ActionsButton Hover">View Form Actions</button>}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <TablePagination
+        rowsPerPageOptions={[]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+      />
+    </TableContainer>
+  );
+}
 
 function Update_Form() {
+  const [data, setData] = useState(null);
+  
+
+  useEffect(() => {
+    getTemplatesByUserId(localStorage.getItem('userId'))
+    .then(response => setData(response.data))
+  },[])
+
   const [update, setupdate] = useState(true);
+
+
   function OnAction() {
     setupdate(false);
   }
@@ -30,24 +88,7 @@ function Update_Form() {
           </div>
           <div className="Card">
             <div className="Icon">
-              <PictureAsPdfIcon />
-              <label onClick={OnAction} className="Label1">
-                Form 1
-              </label>
-              <div className="Link">
-                <Link to="https://dev.azure.com/ASSISTTechChallenge2023/The%20Runaways/_backlogs/backlog/The%20Runaways%20Team/Epics">
-                  https://dev.azure.com/ASSISTTechChallenge2023/The%20Runaways/_backlogs/backlog/The%20Runaways%20Team/Epics
-                </Link>
-              </div>
-              <div className="QR">
-                <QrCodeIcon />
-              </div>
-              <div className="Linie">
-                <Divider />
-              </div>
-              <div className="Pagination">
-                <Pagination count={3} />
-              </div>
+            {data && <MyTable OnAction={OnAction} data={data}/>}
             </div>
           </div>
           <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>

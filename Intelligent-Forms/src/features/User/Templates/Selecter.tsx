@@ -27,19 +27,16 @@ function BasicSelect({ parentCont, valUpdate }) {
           size="small"
           value={identifity ? identifity : "None"}
         >
-
           <MenuItem value={"None"}>None</MenuItem>
-
-          <MenuItem value={"Identify_card"}>Identify card</MenuItem>
-          <MenuItem value={"Passport_card"}>Passport card</MenuItem>
-          <MenuItem value={"Birth_certificate"}>Birth certificate</MenuItem>
-          <MenuItem value={"Vehicle_Identity_card"}>
+          <MenuItem value={"Identity_Card"}>Identify card</MenuItem>
+          <MenuItem value={"Passport_Card"}>Passport card</MenuItem>
+          <MenuItem value={"Birth_Certificate"}>Birth certificate</MenuItem>
+          <MenuItem value={"Vehicle_Identity_Card"}>
             Vehicle Identity card
           </MenuItem>
-          <MenuItem value={"Any_document"}>Any document</MenuItem>
+          <MenuItem value={"Any_Document"}>Any document</MenuItem>
         </Select>
-        <div>
-    </div>
+        <div></div>
       </FormControl>
     </Box>
   );

@@ -105,7 +105,6 @@
 
 .container{
     height: 30px;
-    margin-left: 210px;
     display: flex;
     justify-content: left;
     align-items: normal;
@@ -115,6 +114,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #473f65;
     font-size: xx-small;
+    margin-left: 6%;
 }
 
 .buttonBack{

@@ -8,7 +8,7 @@ import { readSingleUserAPI } from "../../API/UserAPI/UserAPI";
 
 function logOut() {
   localStorage.clear();
-  window.location.href = "/";
+  window.location.href= "/";
 }
 
 function Profile() {

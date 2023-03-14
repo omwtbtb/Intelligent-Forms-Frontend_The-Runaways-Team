@@ -1,5 +1,15 @@
-.All {
-  display: flex;
-  justify-content: center;
-  gap: 20rem;
+.pdf {
+  height: 400px;
+  width: 550px;
+}
+
+.ContainerFirst {
+  text-align: center;
+  padding: 40px;
+  padding-top: 80px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.Position {
+  padding-top: 10px;
 }

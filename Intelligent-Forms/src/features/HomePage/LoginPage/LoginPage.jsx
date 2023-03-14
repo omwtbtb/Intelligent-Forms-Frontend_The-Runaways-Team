@@ -3,41 +3,38 @@ import NavBar from "../FirstPage/NavBar";
 import "./LoginPage.css";
 import { loginUserAPI } from "../../API/UserAPI/UserAPI";
 import { createUserAPI } from "../../API/UserAPI/UserAPI";
-import { Button } from 'primereact/button';
-
+import { Button } from "primereact/button";
+import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 // import Button from "@mui/material/Button";
 
-function LoginForm() {
-const[email, setEmail] = useState('')
-const[password, setPassword] = useState('')
+const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-const signIn = async()=>{
-  const LoginCredential ={
-    "emailAddress": email,
-    "password": password
+  const signIn = async () => {
+    const LoginCredential = {
+      emailAddress: email,
+      password: password,
+    };
+
+    try {
+      const response = await loginUserAPI(LoginCredential);
+      console.log(response.data);
+      if (response.status == 200) {
+        localStorage.setItem("isLogin", true);
+        localStorage.setItem("userId", response.data.id);
+        console.log(localStorage);
+       navigate("/Update_Form")
+       window.location.reload()
+      
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
   };
- 
-
-  try{
-        const response = await loginUserAPI(LoginCredential)
-        console.log(response.data)
-        if(response.status==200)
-        {
-        localStorage.setItem('isLogin',true)
-        localStorage.setItem('userId',response.data.id)
-        console.log(localStorage)
-        window.location.href = "/Update_Form"
-        }
-
-  }
-  catch(error) {
-    console.error(error);
-  }
-
-}
-
-
 
   return (
     <div className="LoginForm">
@@ -45,7 +42,7 @@ const signIn = async()=>{
         Email
       </label>
       <input
-      required
+        required
         className="Input Focus"
         placeholder=" Enter your email..."
         type="email"
@@ -57,7 +54,7 @@ const signIn = async()=>{
         Password
       </label>
       <input
-      required
+        required
         className="Input Focus"
         placeholder=" Enter password"
         type="password"
@@ -66,52 +63,51 @@ const signIn = async()=>{
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button className="SubmitButton Hover" type="submit" id="submt" onClick={signIn}>
+      <button
+        className="SubmitButton Hover"
+        type="submit"
+        id="submt"
+        onClick={signIn}
+      >
         LogIn
-
-      
       </button>
-      
     </div>
   );
 }
 
 function RegisterForm() {
-  const[registerName, settingName]= useState('')
-const[registerEmail, settingEmail] = useState('')
-const[registerAddress, settingAddress]= useState('')
-const[registerPassword, settingPassword]= useState('')
+  const [registerName, settingName] = useState("");
+  const [registerEmail, settingEmail] = useState("");
+  const [registerAddress, settingAddress] = useState("");
+  const [registerPassword, settingPassword] = useState("");
 
-function registered()
-{
-  window.location.href='/Login_Register'
-}
-
-const signUp = async()=>{
-  const RegisterCredential ={
-   "name": registerName,
-   "address": registerAddress,
-   "emailAddress": registerEmail,
-   "password": registerPassword
+  function registered() {
+    window.location.href = "#/Login_Register";
   }
-  try{
-      const response= await createUserAPI(RegisterCredential)
-      if(response.status==200)
-      {
-        registered()
+
+  const signUp = async () => {
+    const RegisterCredential = {
+      name: registerName,
+      address: registerAddress,
+      emailAddress: registerEmail,
+      password: registerPassword,
+    };
+    try {
+      const response = await createUserAPI(RegisterCredential);
+      if (response.status == 200) {
+        registered();
       }
-  }
-  catch(error){
-      console.error(error)
-  }
-}
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="RegisterForm">
       <label className="Label" htmlFor="accountName">
         Account Name
       </label>
       <input
-      required
+        required
         className="Input Focus"
         placeholder=" Enter your name"
         type="text"
@@ -123,7 +119,7 @@ const signUp = async()=>{
         Address
       </label>
       <input
-      required
+        required
         className="Input Focus"
         placeholder=" Enter your addresss"
         type="text"
@@ -135,7 +131,7 @@ const signUp = async()=>{
         Email
       </label>
       <input
-      required
+        required
         className="Input Focus"
         placeholder=" Enter your email..."
         type="email"
@@ -147,21 +143,23 @@ const signUp = async()=>{
         Password
       </label>
       <input
-      required
+        required
         className="Input Focus"
         placeholder=" Enter password"
         type="password"
         id="pwd2"
         value={registerPassword}
-        onChange={(e) => settingPassword(e.target.value) }
+        onChange={(e) => settingPassword(e.target.value)}
       />
 
-      <button onClick={signUp} className="SubmitButton" type="submit" id="submt">
-       Register
-
-
+      <button
+        onClick={signUp}
+        className="SubmitButton"
+        type="submit"
+        id="submt"
+      >
+        Register
       </button>
-      
     </div>
   );
 }
@@ -169,7 +167,6 @@ const signUp = async()=>{
 function Test() {
   const [login, setlogin] = useState(true);
   const [register, setregister] = useState(false);
-
 
   function LoginClik() {
     setlogin(true);

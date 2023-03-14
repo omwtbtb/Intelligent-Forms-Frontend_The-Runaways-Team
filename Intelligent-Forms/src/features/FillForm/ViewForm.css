@@ -1,4 +1,16 @@
-.all2 {
-  padding-top: 30px;
-  background-color: #c0cfee;
+
+.pdf {
+  height: 400px;
+  width: 550px;
+}
+
+.ContainerFirst {
+  text-align: center;
+  padding: 40px;
+  padding-top: 80px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.Position {
+  padding-top: 10px;
 }

@@ -1,56 +1,68 @@
-// import React, { useRef } from "react";
-// import html2pdf from "html2pdf.js";
-// import "./ViewForm.css";
+import React, { useState } from "react";
+import html2pdf from "html2pdf.js";
+import "./ViewForm.css"
+import Button from "@mui/material/Button";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { deleteTemplateById } from "../API/TemplateAPI/TemplateAPI";
 
-// export default function ViewForm({ form }) {
-//   const embedRef = useRef(null);
+export default function ViewForm({ form }) {
+  const [viewForm, setViewForm] = useState(null);
 
-//   function handleCreatePDF() {
-//     const element = document.getElementById("pdfContent");
-//     var opt = {
-//       margin: 1,
-//       filename: "myfile.pdf",
-//       image: { type: "jpeg", quality: 0.98 },
-//       html2canvas: { scale: 2 },
-//       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-//     };
-//     html2pdf()
-//       .set(opt)
-//       .from(element)
-//       .outputPdf()
-//       .then(function (pdf) {
-//         const url = URL.createObjectURL(pdf);
-//         console.log(URL.createObjectURL(pdf));
-//         embedRef.current.src = url;
-//       });
-//   }
+  function handleCreatePDF() {
+    const element = document.getElementById("pdfContent");
+    var opt = {
+      margin: 1,
+      filename: "myfile.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
 
-//   return (
-//     <div className="all2">
-//       <div id="pdfContent">
-//         <h1>{form.formTitle}</h1>
-//         {form.sections.map((section) => (
-//           <div key={section.sectionName}>
-//             <h2>{section.sectionName}</h2>
-//             <p>{section.content}</p>
-//           </div>
-//         ))}
-//       </div>
-//       {/* <button onClick={handleCreatePDF}>Create PDF</button> */}
-//       {/* <embed
-//         ref={embedRef}
-//         type="application/pdf"
-//         width="500px"
-//         height="600px"
-//       />  */}
-//     </div>
-//   );
-// }
+    html2pdf().set(opt).from(element).save();
 
-import React from "react";
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .outputPdf()
+      .then(function (pdf) {
+        const blob = new Blob([pdf], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        console.log(url);
+        setViewForm(url);
+      });
+  }
 
-function ViewForm() {
-  return <div>ViewForm</div>;
+  return (
+    <div className="all">
+      <div id="pdfContent">Test</div>
+      <div className="ContainerFirst">
+        <h4>ViewForm</h4>
+        <div className="pdf-container">
+          <div className="pdf">
+            {viewForm && (
+              <>
+                <iframe src={viewForm} width="70%" height="400"></iframe>
+              </>
+            )}
+
+            {!viewForm && (
+              <>
+                <ProgressSpinner />
+              </>
+            )}
+          </div>
+          <div className="Position">
+            <Button
+              variant="outlined"
+              className="p-inputtext-sm"
+              onClick={() => handleCreatePDF()}
+            >
+              Generate PDF
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default ViewForm;

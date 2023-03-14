@@ -9,12 +9,16 @@ import { getTemplatesByUserId } from "../../API/TemplateAPI/TemplateAPI";
 import { useEffect } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
 
-const rowsPerPage = 4;
 
+function Update_Form() {
 
+const [activeTemplateId, setActiveTemplateId]=useState(null);
+
+const rowsPerPage = 5;
 
 function MyTable({data, OnAction}){
   const [page, setPage] = React.useState(0);
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -26,39 +30,52 @@ function MyTable({data, OnAction}){
 
   return (
     <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-              <TableCell key={"formTitle"} align="center">{"Form Title"}</TableCell>
-              <TableCell key={"fillFormLink"} align="center">{"Fill Form Link"}</TableCell>
-              <TableCell key={"formActions"} align="center">{"Actions"}</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-                <TableCell key={'formTitle'} align="center">{[<PictureAsPdfIcon key={"pdf"}/>, row.formTitle]}</TableCell>
-                <TableCell  key={'fillFormLink'} align="center">{<a href={`www.intelligentforms.azurewebistes.net/FillForm/${row.id}`}>{`intelligentforms.azurewebistes.net/FillForm/${row.id}`}</a>}</TableCell>
-                <TableCell key={'formActions'} align="center">{<button onClick={OnAction} className="ActionsButton Hover">View Form Actions</button>}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <TablePagination
-        rowsPerPageOptions={[]}
-        component="div"
-        count={data.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-      />
+  <Table style={{ tableLayout: 'fixed' }}>
+    <TableHead>
+      <TableRow>
+        <TableCell style={{paddingLeft:'10%'}} key={"formTitle"}  align="left">{"Form Title"}</TableCell>
+        <TableCell key={"fillFormLink"} align="center">{"Fill Form Link"}</TableCell>
+        <TableCell key={"formActions"} align="center">{"Actions"}</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {rows.map((row) => (
+        <TableRow key={row.id}>
+        <TableCell style={{paddingLeft:'10%'}} key={'formTitle'} align="center">
+        <span style={{ display: 'flex', alignItems: 'center', justifyContent:'left', align:'center'}}>
+          <PictureAsPdfIcon style={{ marginRight: '5px', verticalAlign: 'middle', align:'center' }} />
+          {row.formTitle}
+        </span>
+      </TableCell>
+          <TableCell key={'fillFormLink'} align="center">
+            <a href={`www.intelligentforms.azurewebistes.net/FillForm/${row.id}`}>
+              {`intelligentforms.azurewebistes.net/FillForm/${row.id}`}
+            </a>
+          </TableCell>
+          <TableCell key={'formActions'} align="center">
+            <button  onClick={() => {OnAction(), setActiveTemplateId(row.id)}} className="ActionsButton Hover">View Form Actions</button>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop:'50px' }}>
+  <TablePagination
+    rowsPerPageOptions={[]}
+    component="div"
+    count={data.length}
+    rowsPerPage={rowsPerPage}
+    page={page}
+    onPageChange={handleChangePage}
+  />
+</div>
     </TableContainer>
   );
 }
 
-function Update_Form() {
+
   const [data, setData] = useState(null);
-  
+
 
   useEffect(() => {
     getTemplatesByUserId(localStorage.getItem('userId'))
@@ -67,8 +84,8 @@ function Update_Form() {
 
   const [update, setupdate] = useState(true);
 
-
   function OnAction() {
+    console.log("da")
     setupdate(false);
   }
   function OnAction1() {
@@ -99,7 +116,7 @@ function Update_Form() {
           <ArrowCircleLeftIcon />
         </div>
       )}
-      {!update && <FormActions />}
+      {!update && <FormActions activeTemplateId={activeTemplateId} />}
     </div>
   );
 }

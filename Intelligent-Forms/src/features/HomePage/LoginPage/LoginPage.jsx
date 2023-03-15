@@ -6,7 +6,6 @@ import { createUserAPI } from "../../API/UserAPI/UserAPI";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-// import Button from "@mui/material/Button";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -26,11 +25,9 @@ const LoginForm = () => {
         localStorage.setItem("isLogin", true);
         localStorage.setItem("userId", response.data.id);
         console.log(localStorage);
-       navigate("/Update_Form")
-       window.location.reload()
-      
+        navigate("/Update_Form");
+        window.location.reload();
       }
-
     } catch (error) {
       console.error(error);
     }
@@ -73,7 +70,7 @@ const LoginForm = () => {
       </button>
     </div>
   );
-}
+};
 
 function RegisterForm() {
   const [registerName, settingName] = useState("");

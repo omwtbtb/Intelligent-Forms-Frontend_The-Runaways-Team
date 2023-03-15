@@ -1,68 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import html2pdf from "html2pdf.js";
-import "./ViewForm.css"
-import Button from "@mui/material/Button";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { deleteTemplateById } from "../API/TemplateAPI/TemplateAPI";
+import "./ViewForm.css";
+import parse from "html-react-parser";
 
-export default function ViewForm({ form }) {
-  const [viewForm, setViewForm] = useState(null);
+export default function ViewForm({ form, updateContent }) {
+  const [pdfUrl, setPdfUrl] = useState(null);
 
-  function handleCreatePDF() {
-    const element = document.getElementById("pdfContent");
-    var opt = {
-      margin: 1,
-      filename: "myfile.pdf",
+  useEffect(() => {
+    generatePDF();
+  }, [updateContent]);
+
+  const generatePDF = () => {
+    const elements = document.querySelectorAll(".section");
+    const tempContainer = document.createElement("div");
+
+    const options = {
+      margin: [0, 0, 0, 0],
+      filename: "example.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
 
-    html2pdf().set(opt).from(element).save();
+    elements.forEach((element) => {
+      const clonedElement = element.cloneNode(true);
+      tempContainer.appendChild(clonedElement);
+    });
 
     html2pdf()
-      .set(opt)
-      .from(element)
-      .outputPdf()
-      .then(function (pdf) {
-        const blob = new Blob([pdf], { type: "application/pdf" });
-        const url = URL.createObjectURL(blob);
-        console.log(url);
-        setViewForm(url);
+      .set(options)
+      .from(tempContainer)
+      .toPdf()
+      .get("pdf")
+      .then((pdf) => {
+        const pdfUrl = URL.createObjectURL(pdf.output("blob"));
+        setPdfUrl(pdfUrl);
       });
-  }
+  };
 
   return (
-    <div className="all">
-      <div id="pdfContent">Test</div>
-      <div className="ContainerFirst">
-        <h4>ViewForm</h4>
-        <div className="pdf-container">
-          <div className="pdf">
-            {viewForm && (
-              <>
-                <iframe src={viewForm} width="70%" height="400"></iframe>
-              </>
-            )}
-
-            {!viewForm && (
-              <>
-                <ProgressSpinner />
-              </>
-            )}
-          </div>
-          <div className="Position">
-            <Button
-              variant="outlined"
-              className="p-inputtext-sm"
-              onClick={() => handleCreatePDF()}
-            >
-              Generate PDF
-            </Button>
-          </div>
+    <div>
+      <div className="all">
+        <h4>View Form</h4>
+        <iframe src={pdfUrl} width="400px" height="500px" />
+        <div className="Pdf" style={{ display: "none" }}>
+          {form.sections.map((section, index) => (
+            <div className="section" key={index}>
+              {/* {parse(section.content)} */}
+              {updateContent[index] === "" ||
+              typeof updateContent[index] !== "string"
+                ? parse(section.content)
+                : parse(updateContent[index])}
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
-

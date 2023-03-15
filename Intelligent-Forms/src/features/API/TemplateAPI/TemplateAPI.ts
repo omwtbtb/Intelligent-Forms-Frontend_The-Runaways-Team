@@ -7,11 +7,13 @@ const FormCreateURL =
   "https://intelligentformsapi.azurewebsites.net/api/v1/forms?userId=";
 
 const GetTempletsURL =
-  "https://intelligentformsapi.azurewebsites.net/api/v1/forms/fe94f04a-7dbb-4b8b-6dbf-08db23103957";
+  "https://intelligentformsapi.azurewebsites.net/api/v1/forms/c054bb40-7900-4be2-1606-08db253984b7";
 
-const getTemplatesByUserIdURL='https://intelligentformsapi.azurewebsites.net/api/v1/forms?userId='
+const getTemplatesByUserIdURL =
+  "https://intelligentformsapi.azurewebsites.net/api/v1/forms?userId=";
 
-const deleteTemplateByIdURL='https://intelligentformsapi.azurewebsites.net/api/v1/forms/'
+const deleteTemplateByIdURL =
+  "https://intelligentformsapi.azurewebsites.net/api/v1/forms/";
 
 export const createTemplate = async (Template: any, userId: string) => {
   const response = await TemplateAPI.post(
@@ -26,16 +28,18 @@ export const getTemplate = async () => {
   return response;
 };
 
-export const getTemplatesByUserId = async ( userId:string) => {
-    const response=await TemplateAPI.get(`${getTemplatesByUserIdURL}${userId}`)
-    console.log(response);
-
-    return response
-}
-
-export const deleteTemplateById = async ( userId:string) => {
-  const response=await TemplateAPI.delete(`${deleteTemplateByIdURL}${userId}`)
+export const getTemplatesByUserId = async (userId: string) => {
+  const response = await TemplateAPI.get(`${getTemplatesByUserIdURL}${userId}`);
   console.log(response);
 
-  return response
-}
+  return response;
+};
+
+export const deleteTemplateById = async (userId: string) => {
+  const response = await TemplateAPI.delete(
+    `${deleteTemplateByIdURL}${userId}`
+  );
+  console.log(response);
+
+  return response;
+};

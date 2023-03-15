@@ -7,23 +7,28 @@ import { ProgressSpinner } from "primereact/progressspinner";
 
 export default function FillForm() {
   const [dataResponse, setDataResponse] = useState(null);
+  const [content, setContent] = useState([""]);
 
   useEffect(() => {
     async function fetchData() {
       const response = await getTemplate();
       setDataResponse(response.data);
-      console.log(response.data);
     }
     fetchData();
   }, []);
+
+  const handleChildClick = (value) => {
+    setContent(value);
+    console.log(value);
+  };
 
   return (
     <>
       <div className="All">
         {dataResponse ? (
           <>
-            <Form form={dataResponse} />
-            <ViewForm form={dataResponse} />
+            <Form form={dataResponse} onChildClick={handleChildClick} />
+            <ViewForm form={dataResponse} updateContent={content} />
           </>
         ) : (
           <>
@@ -32,6 +37,7 @@ export default function FillForm() {
             </div>
           </>
         )}
+        <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
       </div>
     </>
   );

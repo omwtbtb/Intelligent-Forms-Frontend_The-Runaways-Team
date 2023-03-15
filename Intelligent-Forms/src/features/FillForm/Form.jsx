@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Form.css";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -10,20 +10,61 @@ import { InputNumber } from "primereact/inputnumber";
 import { Calendar } from "primereact/calendar";
 import Button from "@mui/material/Button";
 
-export default function Form({ form }) {
+export default function Form({ form, onChildClick }) {
   const [valueNrInput, setValueNrInput] = useState(null);
-  const [date, setDate] = useState(null);
   const [valueNrFractionInput, setValueNrFractionInput] = useState(null);
+  const [valall, setValAll] = useState([{ name: "", value: "" }]);
+  const [valueContent, setValueContent] = useState([""]);
+
+  useEffect(() => {
+    onChildClick(valueContent);
+  }, [valueContent]);
+
+  const HandlerAll = (
+    event,
+    index,
+    dynamicField_Key,
+    placeHolder_key,
+    content,
+    indexSection
+  ) => {
+    // if (valall[index].value === "") {
+    const updatePlaceHolder = placeHolder_key.replace(/[<>]/g, "");
+    const updatePlaceHolderNew = "&lt;" + updatePlaceHolder + "&gt;";
+    const updateContent = [...valueContent];
+    updateContent[indexSection] = content.replace(
+      updatePlaceHolderNew,
+      event.target.value
+    );
+    setValueContent(updateContent);
+    console.log(updateContent);
+    const updateText = [...valall, { name: "", value: "" }];
+    updateText[index].name = dynamicField_Key;
+    updateText[index].value = event.target.value;
+    setValAll(updateText);
+    // } else {
+    //   console.log(valueContent);
+    //   const updateNewContent = [...valueContent];
+    //   console.log(updateNewContent);
+    //   const updatedContent = updateNewContent[indexSection].replace(
+    //     valall[index].value,
+    //     event.target.value
+    //   );
+    //   updateNewContent[indexSection] = updatedContent;
+    //   console.log(updatedContent);
+    //   setValueContent(updateNewContent);
+    // }
+  };
 
   return (
     <div className="form">
       <div className="form-completion">
-        {form.sections.map((section) => (
+        {form.sections.map((section, indexSection) => (
           <div key={section.sectionName}>
             <h3 className="SectionName">{section.sectionName}</h3>
             <table>
               <tbody>
-                {section.fields.map((field) => (
+                {section.fields.map((field, indexField) => (
                   <tr key={field.dynamicField_Key}>
                     <td>
                       <label htmlFor={field.dynamicField_Key}>
@@ -37,22 +78,19 @@ export default function Form({ form }) {
                     <td>
                       {field.fieldType === "Single-choice" ? (
                         <>
-                          {field.options.map((option, index) => {
-                            return (
-                              <>
-                                <RadioGroup
-                                  aria-labelledby="demo-radio-buttons-group-label"
-                                  name="radio-buttons-group"
-                                >
-                                  <FormControlLabel
-                                    value="test"
-                                    control={<Radio />}
-                                    label={option}
-                                  />
-                                </RadioGroup>
-                              </>
-                            );
-                          })}
+                          <RadioGroup
+                            aria-label={field.dynamicField_Key}
+                            name={field.dynamicField_Key}
+                          >
+                            {field.options.map((option, index) => (
+                              <FormControlLabel
+                                key={index}
+                                value={option}
+                                control={<Radio />}
+                                label={option}
+                              />
+                            ))}
+                          </RadioGroup>
                         </>
                       ) : null}
 
@@ -83,18 +121,26 @@ export default function Form({ form }) {
                               placeholder="Text Value"
                               pattern="[A-Za-z]+"
                               title="Introduceți numai litere"
+                              onChange={(e) =>
+                                HandlerAll(
+                                  e,
+                                  indexField,
+                                  field.dynamicField_Key,
+                                  field.placeHolder_Key,
+                                  section.content,
+                                  indexSection
+                                )
+                              }
                             />
                           </div>
                         </>
                       ) : null}
-
                       {field.fieldType === "Number" ? (
                         <>
                           <div className="Pozitionare">
                             <InputNumber
                               inputId="integeronly"
                               className="p-inputtext-sm"
-                              value={valueNrInput}
                               placeholder="Number Value"
                               onValueChange={(e) => setValueNrInput(e.value)}
                             />
@@ -108,8 +154,16 @@ export default function Form({ form }) {
                             <Calendar
                               className="p-inputtext-sm"
                               placeholder="dd/mm/yyyy"
-                              value={date}
-                              onChange={(e) => setDate(e.date)}
+                              onChange={(e) =>
+                                HandlerAll(
+                                  e,
+                                  indexField,
+                                  field.dynamicField_Key,
+                                  field.placeHolder_Key,
+                                  section.content,
+                                  indexSection
+                                )
+                              }
                             />
                           </div>
                         </>
@@ -140,6 +194,11 @@ export default function Form({ form }) {
             </div>
           </div>
         ))}
+      </div>
+      <div className="Submit">
+        <Button variant="outlined" className="p-inputtext-sm">
+          Submit
+        </Button>
       </div>
     </div>
   );

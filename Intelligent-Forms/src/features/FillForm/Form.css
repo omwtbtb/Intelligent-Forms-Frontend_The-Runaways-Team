@@ -1,14 +1,16 @@
 .form {
-  padding-top: 100px;
-  text-align: right;
+  padding-top: 70px;
+
   width: 500px;
 }
 
 .form-completion {
   background-color: #c0cfee;
   border: 1px solid #aabee6;
-  border-radius: 15px;
+  border-radius: 15px 0 0 15px;
   padding: 30px;
+  max-height: 570px;
+  overflow: auto;
 }
 
 .SectionName {
@@ -17,6 +19,13 @@
   font-size: 20px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
+
+.Submit {
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
 .Pozitionare {
   text-align: right;
 }

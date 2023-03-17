@@ -1,50 +1,44 @@
-import React, { useEffect, useRef, useState } from 'react';
-import html2pdf from 'html2pdf.js';
+import React, { useState, useEffect } from "react";
+import Form from "./Form";
+import ViewForm from "./ViewForm";
+import "./FillForm.css";
+import { getTemplate } from "../API/TemplateAPI/TemplateAPI";
+import { ProgressSpinner } from "primereact/progressspinner";
 
-function PDFViewer() {
-  const [pdfUrl, setPdfUrl] = useState(null);
-  const [inputValue, setInputValue] = useState('');
-  const pdfRef = useRef();
+export default function FillForm() {
+  const [dataResponse, setDataResponse] = useState(null);
+  const [content, setContent] = useState([""]);
 
   useEffect(() => {
-    generatePDF();
-  }, [inputValue]);
-
-  const generatePDF = () => {
-    const element = pdfRef.current;
-    const options = {
-      margin: [0, 0, 0, 0],
-      filename: 'example.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-
-    // Modify the PDF content using the input value
-    const inputElement = element.querySelector('#input-field');
-    if (inputElement) {
-      inputElement.textContent = inputValue;
+    async function fetchData() {
+      const response = await getTemplate();
+      setDataResponse(response.data);
     }
+    fetchData();
+  }, []);
 
-    html2pdf().set(options).from(element).toPdf().get('pdf').then((pdf) => {
-      const pdfUrl = URL.createObjectURL(pdf.output('blob'));
-      setPdfUrl(pdfUrl);
-    });
-  };
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+  const handleChildClick = (value) => {
+    setContent(value);
+    console.log(value);
   };
 
   return (
-    <div>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
-      <iframe src={pdfUrl} width="100%" height="500px" />
-      <div ref={pdfRef}>
-        <p>The input value is: <span id="input-field"></span></p>
+    <>
+      <div className="All">
+        {dataResponse ? (
+          <>
+            <Form form={dataResponse} onChildClick={handleChildClick} />
+            <ViewForm form={dataResponse} updateContent={content} />
+          </>
+        ) : (
+          <>
+            <div className="card flex justify-content-center">
+              <ProgressSpinner />
+            </div>
+          </>
+        )}
+        <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
       </div>
-    </div>
+    </>
   );
 }
-
-export default PDFViewer;

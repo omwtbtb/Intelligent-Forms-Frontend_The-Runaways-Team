@@ -30,7 +30,7 @@ function AppRouter() {
         />
         <Route
           exact
-          path={localStorage.getItem("isLogin") && "/Submissions_Forms"}
+          path={localStorage.getItem("isLogin") && "/Submissions_Forms/:id"}
           element={localStorage.getItem("isLogin") && <Submissions_Forms />}
         />
         <Route

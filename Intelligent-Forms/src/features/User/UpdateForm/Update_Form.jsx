@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar2 from "../NavBar2";
 import "./UpdateForm.css";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+
 import { Divider, Pagination } from "@mui/material";
 import FormActions from "./FormActions";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
@@ -82,10 +83,11 @@ function MyTable({data, OnAction}){
     .then(response => setData(response.data))
   },[])
 
+
   const [update, setupdate] = useState(true);
 
   function OnAction() {
-    console.log("da")
+
     setupdate(false);
   }
   function OnAction1() {
@@ -105,7 +107,9 @@ function MyTable({data, OnAction}){
           </div>
           <div className="Card">
             <div className="Icon">
-            {data && <MyTable OnAction={OnAction} data={data}/>}
+
+              {data && <MyTable OnAction={OnAction} data={data} />}
+
             </div>
           </div>
           <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>

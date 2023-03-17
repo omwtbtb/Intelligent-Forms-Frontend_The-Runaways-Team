@@ -32,7 +32,9 @@ function FormActions({activeTemplateId}) {
 
   function viewSubmissions()
   {
+
    window.location.href=`#/Submissions_Forms/${activeTemplateId}`
+
   }
 
   return (

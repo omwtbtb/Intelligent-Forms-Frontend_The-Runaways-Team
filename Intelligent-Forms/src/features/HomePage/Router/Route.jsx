@@ -11,7 +11,10 @@ import Submissions_Forms from "../../User/Submissions/Submissions_Forms";
 import FillForm from "../../FillForm/FillForm";
 import { useState } from "react";
 function AppRouter() {
-  const [isLogin, setIsLogin]=useState(localStorage.getItem('isLogin')==true)
+
+  const [isLogin, setIsLogin] = useState(
+    localStorage.getItem("isLogin") == true
+  );
   return (
     <Router>
       <Routes>

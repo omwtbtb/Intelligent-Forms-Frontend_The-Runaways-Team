@@ -25,11 +25,9 @@ const LoginForm = () => {
         localStorage.setItem("isLogin", true);
         localStorage.setItem("userId", response.data.id);
         console.log(localStorage);
-
         navigate("/Update_Form");
         window.location.reload();
       }
-
     } catch (error) {
       console.error(error);
     }

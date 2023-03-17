@@ -54,7 +54,6 @@ export default function ViewForm({ form, updateContent }) {
                 : parse(updateContent[index])}
             </div>
           ))}
-
         </div>
       </div>
     </div>

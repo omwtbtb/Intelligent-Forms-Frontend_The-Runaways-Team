@@ -11,6 +11,7 @@ import Submissions_Forms from "../../User/Submissions/Submissions_Forms";
 import FillForm from "../../FillForm/FillForm";
 import { useState } from "react";
 function AppRouter() {
+
   const [isLogin, setIsLogin] = useState(
     localStorage.getItem("isLogin") == true
   );
@@ -32,7 +33,7 @@ function AppRouter() {
         />
         <Route
           exact
-          path={localStorage.getItem("isLogin") && "/Submissions_Forms"}
+          path={localStorage.getItem("isLogin") && "/Submissions_Forms/:id"}
           element={localStorage.getItem("isLogin") && <Submissions_Forms />}
         />
         <Route
@@ -41,7 +42,7 @@ function AppRouter() {
             localStorage.getItem("isLogin") ? "/Create_Form" : "/Login_Register"
           }
           element={
-            localStorage.getItem("isLogin") ? <Templates /> : <LoginPage />
+             localStorage.getItem('isLogin') ? <Templates /> : <LoginPage />
           }
         />
         <Route path={"/FillForm/:id"} element={<FillForm />} />

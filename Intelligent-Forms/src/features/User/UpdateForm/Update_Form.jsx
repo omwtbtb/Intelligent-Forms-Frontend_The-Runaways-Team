@@ -9,11 +9,38 @@ import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import { getTemplatesByUserId } from "../../API/TemplateAPI/TemplateAPI";
 import { useEffect } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import 'primeicons/primeicons.css';
+import { deleteTemplateById } from "../../API/TemplateAPI/TemplateAPI";
+import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 
 function Update_Form() {
+ const navigate = useNavigate()
+  const deleteTemplate = async(activeTemplateId)=>{
+    Swal.fire({
+      title: 'Do you want to delete the form?',
+      text: "Deleting the form will result in deleting all it's submission",
+      icon: 'warning',
+      iconColor:'red',
+      showCancelButton: true,
+      confirmButtonColor: '#6e8cc7',
+      cancelButtonColor: '#d95050',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await deleteTemplateById(activeTemplateId);
+        Swal.fire(
+          'Deleted!',
+          'The form and all the submission are deleted!',
+          'success'
+        )
+        window.location.reload()
+      }
+    })
+  }
 
-const [activeTemplateId, setActiveTemplateId]=useState(null);
+
 
 const rowsPerPage = 5;
 
@@ -53,8 +80,10 @@ function MyTable({data, OnAction}){
               {`intelligentforms.azurewebistes.net/FillForm/${row.id}`}
             </a>
           </TableCell>
-          <TableCell key={'formActions'} align="center">
-            <button  onClick={() => {OnAction(), setActiveTemplateId(row.id)}} className="ActionsButton Hover">View Form Actions</button>
+          <TableCell key={'formActions'} align="center" className="tableDetails">
+            {/* <button  onClick={() => {OnAction(), setActiveTemplateId(row.id)}} className="ActionsButton Hover">View Form Actions</button> */}
+            <span> <i className="pi pi-search iconDetails" onClick={()=>{window.location.href=(`#/Submissions_Forms/${row.id}`)}} style={{ fontSize: '1.rem' }}></i></span>
+            <span><DeleteIcon  className="deleteIcon" onClick={()=>deleteTemplate(row.id)}/></span>
           </TableCell>
         </TableRow>
       ))}

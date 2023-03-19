@@ -3,38 +3,38 @@ import NavBar2 from "../NavBar2";
 import "./UpdateForm.css";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
-import { Divider, Pagination } from "@mui/material";
+import { Divider, IconButton, Pagination } from "@mui/material";
 import FormActions from "./FormActions";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import { getTemplatesByUserId } from "../../API/TemplateAPI/TemplateAPI";
 import { useEffect } from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import 'primeicons/primeicons.css';
 import { deleteTemplateById } from "../../API/TemplateAPI/TemplateAPI";
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import {QRCodeCanvas} from 'qrcode.react';
 
-function Update_Form() {
+
+function Update_Form(props) {
  const navigate = useNavigate()
+ const [hover, setHover] = useState(false);
   const deleteTemplate = async(activeTemplateId)=>{
     Swal.fire({
       title: 'Do you want to delete the form?',
-      text: "Deleting the form will result in deleting all it's submission",
+      //text: "Deleting the form will result in deleting all it's submission",
       icon: 'warning',
       iconColor:'red',
       showCancelButton: true,
       confirmButtonColor: '#6e8cc7',
       cancelButtonColor: '#d95050',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes!'
     }).then(async (result) => {
       if (result.isConfirmed) {
         await deleteTemplateById(activeTemplateId);
-        Swal.fire(
-          'Deleted!',
-          'The form and all the submission are deleted!',
-          'success'
-        )
+       
         window.location.reload()
       }
     })
@@ -55,35 +55,51 @@ function MyTable({data, OnAction}){
   const start = page * rowsPerPage;
   const end = start + rowsPerPage;
   const rows = data.slice(start, end);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   return (
     <TableContainer>
   <Table style={{ tableLayout: 'fixed' }}>
     <TableHead>
       <TableRow>
-        <TableCell style={{paddingLeft:'10%'}} key={"formTitle"}  align="left">{"Form Title"}</TableCell>
-        <TableCell key={"fillFormLink"} align="center">{"Fill Form Link"}</TableCell>
-        <TableCell key={"formActions"} align="center">{"Actions"}</TableCell>
+        <TableCell className="Details" style={{paddingLeft:'10%'}} key={"formTitle"}  align="left">{"Title"}</TableCell>
+        <TableCell className="Details" key={"fillFormLink"} align="center">{"Fill Link"}</TableCell>
+        <TableCell className="Details" key={"QRCode"} align="center">{"QR Code"}</TableCell>
+        <TableCell className="Details" key={"formActions"} align="center">{"Actions"}</TableCell>
+
       </TableRow>
     </TableHead>
     <TableBody>
       {rows.map((row) => (
         <TableRow key={row.id}>
         <TableCell style={{paddingLeft:'10%'}} key={'formTitle'} align="center">
-        <span style={{ display: 'flex', alignItems: 'center', justifyContent:'left', align:'center'}}>
+        <span style={{ display: 'flex', alignItems: 'center', justifyContent:'left', align:'center',    fontSize:'13px'}}>
           <PictureAsPdfIcon style={{ marginRight: '5px', verticalAlign: 'middle', align:'center' }} />
           {row.formTitle}
         </span>
       </TableCell>
           <TableCell key={'fillFormLink'} align="center">
-            <a href={`www.intelligentforms.azurewebistes.net/FillForm/${row.id}`}>
-              {`intelligentforms.azurewebistes.net/FillForm/${row.id}`}
+            <a style={{fontSize:"13px"}} href={`/#/FillForm/${row.id}`}>
+              {`intelligentforms.azurewebsites/#/FillForm/${row.id}`}
             </a>
           </TableCell>
+          <TableCell key={'fillFormLink'} align="center">
+          <QRCodeCanvas style={{width:'50px', height:'50px'}} value={`intelligentforms.azurewebsites.net/#/FillForm/${row.id}`}/>
+          </TableCell>
           <TableCell key={'formActions'} align="center" className="tableDetails">
-            {/* <button  onClick={() => {OnAction(), setActiveTemplateId(row.id)}} className="ActionsButton Hover">View Form Actions</button> */}
-            <span> <i className="pi pi-search iconDetails" onClick={()=>{window.location.href=(`#/Submissions_Forms/${row.id}`)}} style={{ fontSize: '1.rem' }}></i></span>
-            <span><DeleteIcon  className="deleteIcon" onClick={()=>deleteTemplate(row.id)}/></span>
+           <Tooltip title="View">
+            <IconButton>
+            <span><VisibilityIcon className="iconDetails" onClick={()=>{window.location.href=(`#/Submissions_Forms/${row.id}`)}} style={{ fontSize: '1.rem' }}/> </span>
+            </IconButton>
+           </Tooltip>
+            
+           
+            <Tooltip title="Delete">
+              <IconButton>
+                <span><DeleteIcon  className="deleteIcon "  onClick={()=>deleteTemplate(row.id)}/></span>
+                </IconButton>
+             </Tooltip>
+               
           </TableCell>
         </TableRow>
       ))}
@@ -128,12 +144,7 @@ function MyTable({data, OnAction}){
       <NavBar2 />
       {update && (
         <>
-          <div className="container">
-            <h2 className="Text">Forms</h2>
-          </div>
-          <div className="Linie1">
-            <Divider />
-          </div>
+        
           <div className="Card">
             <div className="Icon">
 

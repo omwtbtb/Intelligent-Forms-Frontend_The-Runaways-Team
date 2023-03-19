@@ -2,9 +2,7 @@ import React from "react";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import Profile from "../../User/Profile/Profile";
 import Templates from "../../User/Templates/Templates";
-
 import Update_Form from "../../User/UpdateForm/Update_Form";
-
 import FirstPage from "../FirstPage/FirstPage";
 import LoginPage from "../LoginPage/LoginPage";
 import Submissions_Forms from "../../User/Submissions/Submissions_Forms";
@@ -22,7 +20,9 @@ function AppRouter() {
           exact
           path=""
           element={
-            localStorage.getItem("isLogin") ? <Profile /> : <FirstPage />
+           <FirstPage /> 
+           
+           
           }
         />
         <Route
@@ -36,13 +36,18 @@ function AppRouter() {
           path={localStorage.getItem("isLogin") && "/Submissions_Forms/:id"}
           element={localStorage.getItem("isLogin") && <Submissions_Forms />}
         />
-        <Route
+         <Route
+          exact
+          path={localStorage.getItem("isLogin") && "/Create_Form"}
+          element={<Templates />}
+        />
+        <Route       
           exact
           path={
-            localStorage.getItem("isLogin") ? "/Create_Form" : "/Login_Register"
+           "/Login_Register"
           }
           element={
-             localStorage.getItem('isLogin') ? <Templates /> : <LoginPage />
+             <LoginPage />
           }
         />
         <Route path={"/FillForm/:id"} element={<FillForm />} />

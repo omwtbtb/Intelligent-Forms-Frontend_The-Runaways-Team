@@ -6,10 +6,14 @@ import { createUserAPI } from "../../API/UserAPI/UserAPI";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-// import Button from "@mui/material/Button";
-
-
+function Test(props) {
+  
+  const location = useLocation(); 
+  const { LOGIN, REGISTER} = location.state ?? {};
+  
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,14 +21,12 @@ function LoginForm() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
-
-
+  
   const signIn = async () => {
     const LoginCredential = {
       emailAddress: email,
       password: password,
     };
-
 
     setIsLoading(true);
     setEmailError("");
@@ -47,7 +49,6 @@ function LoginForm() {
 
     }
     setIsLoading(false);
-
   };
 
   const validateForm= () => {
@@ -75,11 +76,8 @@ function LoginForm() {
         Email
       </label>
       <input
-
-        
-
-        className="Input Focus"
-        placeholder="Name@gmail.com"
+        className="Input"
+        placeholder="Enter your email address"
         type="email"
         id="email1"
         value={email}
@@ -90,11 +88,8 @@ function LoginForm() {
         Password
       </label>
       <input
-
-        
-
-        className="Input Focus"
-        placeholder="Enter password"
+        className="Input"
+        placeholder="Enter your password"
         type="password"
         id="pwd1"
         value={password}
@@ -124,7 +119,7 @@ function LoginForm() {
 
 function RegisterForm() {
 
-  const[registerName, settingName]= useState('')
+const[registerName, settingName]= useState('')
 const[registerEmail, settingEmail] = useState('')
 const[registerAddress, settingAddress]= useState('')
 const[registerPassword, settingPassword]= useState('')
@@ -139,8 +134,6 @@ const [registerResponse, setRegisterResponse] = useState("")
   function registered() {
     window.location.href = "#/Login_Register";
   }
-
-
 
   const signUp = async()=>{
   setIsLoading(true)
@@ -161,7 +154,6 @@ const [registerResponse, setRegisterResponse] = useState("")
     
       if(response.status==200)
       {
-        
         registered()
       }
      else{
@@ -207,14 +199,11 @@ const validateRegister = () => {
   return (
     <div className="RegisterForm">
       <label className="Label" htmlFor="accountName">
-        Account Name
+        Name
       </label>
       <input
-
-      min="3" max="50"
-      required 
-
-        className="Input Focus"
+        min="3" max="50"
+        className="Input"
         placeholder=" Enter your name"
         type="text"
         id="accountName"
@@ -226,12 +215,9 @@ const validateRegister = () => {
         Address
       </label>
       <input
-
-       min="8" max="50"
-      required
-
-        className="Input Focus"
-        placeholder=" Enter your addresss"
+        min="8" max="50"
+        className="Input"
+        placeholder=" Enter your address"
         type="text"
         id="address"
         value={registerAddress}
@@ -243,12 +229,8 @@ const validateRegister = () => {
         Email
       </label>
       <input
-
-       
-      required
-
-        className="Input Focus"
-        placeholder=" Enter your email@email.com"
+        className="Input"
+        placeholder="name@gmail.com"
         type="email"
         id="email2"
         value={registerEmail}
@@ -261,11 +243,9 @@ const validateRegister = () => {
       </label>
       <input
 
-       min="5" max="50"
-      required
-
-        className="Input Focus"
-        placeholder=" Enter password"
+        min="5" max="50"
+        className="Input"
+        placeholder=" Enter a password"
         type="password"
         id="pwd2"
         value={registerPassword}
@@ -273,24 +253,17 @@ const validateRegister = () => {
       />
       {passwordError && <div className="ErrorMessage ErrorStyle">{passwordError}</div>}
 
-
-
       <button  className="SubmitButton" type="submit" id="submt" onClick={()=>{if(validateRegister()){signUp();} }}
        disabled={isLoading? true : false}>
        Register
-
-
-
       </button>
       
     </div>
   );
-  }
+}
 
-function Test() {
-  const [login, setlogin] = useState(true);
-  const [register, setregister] = useState(false);
-
+  const [login, setlogin] = useState(LOGIN);
+  const [register, setregister] = useState(REGISTER);
 
   function LoginClik() {
     setlogin(true);
@@ -325,9 +298,10 @@ function Test() {
             </form>
           </div>
           <div className="Right-side">
+            <div className="PozaLogin">
+            {login && <img src="images/LoginPage.png" alt="Logo" />}
+            </div>
             <div className="Poza">
-              {login && <img src="images/LoginPage.png" alt="Logo" />}
-
               {register && <img src="images/Register.png" alt="Logo" />}
             </div>
           </div>
@@ -336,6 +310,5 @@ function Test() {
     </div>
   );
 }
-
 
 export default Test;

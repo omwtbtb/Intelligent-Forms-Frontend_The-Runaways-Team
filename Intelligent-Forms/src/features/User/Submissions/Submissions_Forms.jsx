@@ -16,7 +16,10 @@ import DownloadIcon from '@mui/icons-material/Download';
 import { IconButton } from '@mui/material';
 import html2pdf from 'html2pdf.js';
 import ArrowForwardSharp from "@mui/icons-material/ArrowForwardSharp";
+import SearchIcon from '@mui/icons-material/Search';
+
 export default function Submission_Forms()
+
 {
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,7 +49,8 @@ export default function Submission_Forms()
         console.log(error);
       });
   }, []);
-
+  
+  submissions.sort((a, b) => new Date(a.timeStamp) - new Date(b.timeStamp));
   
   function convertHtmlToPdf(htmlString, id) {
     html2pdf()
@@ -113,44 +117,53 @@ export default function Submission_Forms()
       setSortingOrder("asc");
     }
   };
+  
     return (
       <>
         <TableContainer>
           <Table style={{ tableLayout: "fixed" }}>
-            <TableHead>
-              <TableRow>
+            <TableHead >
+              <TableRow >
                 <TableCell
+                className="Details"
                   key={"TimeStamp"}
                   align="center"
                   onClick={() => handleSortClick("timeStamp")}
+                  style={{fontSize:'15px'}}
                 >
                 Create Date
                 </TableCell>
                 <TableCell
+                className="Details"
                   key={allFields[0]}
                   align="center"
+                  style={{fontSize:'15px'}}
                 >
                   {allFields[0]}
                 </TableCell>
                 <TableCell
+                className="Details"
                   key={allFields[1]}
                   align="center"
+                  style={{fontSize:'15px'}}
                 >
                   {allFields[1]}{" "}
                 </TableCell>
                 <TableCell
+                className="Details"
                   key={allFields[2]}
                   align="center"
+                  style={{fontSize:'15px'}}
                 >
                   {allFields[2]}{" "}
                 </TableCell>
-               <TableCell key={allFields[3]} align="center">
+               <TableCell className="Details" key={allFields[3]} align="center" style={{fontSize:'15px'}}>
                  {allFields[3]}
                </TableCell>
-               <TableCell key={allFields[4]} align="center">
+               <TableCell className="Details" key={allFields[4]} align="center" style={{fontSize:'15px'}}>
                  {allFields[4]}
                </TableCell>
-               <TableCell key={"Actions"} align="center">
+               <TableCell className="Details" key={"Actions"} align="center" style={{fontSize:'15px'}}>
                  {"Download"}
                </TableCell>
              </TableRow>
@@ -261,22 +274,23 @@ export default function Submission_Forms()
     return (
       <div>
         <NavBar2 />
-        <div className="container"><h2 className="Style">Submissions</h2>
-            <h2 className="Style">Search by:</h2>
+        <div className="container">
+            <span><SearchIcon/></span>
             <div className="Margin">
-            <input
+            <input className="Search"
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search"
+           
           />
             </div>
         </div>
-      <div className="Linie1"><Divider /></div>
+      
          <div className="Tabel">
             <div className="app-container">
                {submissions&&form&&<MyTable/>}
-               <div className="Border"><Divider /></div>
+               
 
             </div>
           

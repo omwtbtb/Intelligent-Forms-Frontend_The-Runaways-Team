@@ -7,7 +7,7 @@ body {
 }
 
 .Nav-Bar {
-  padding: 20px;
+  padding: 5px;
   margin: 0 auto;
   padding-right: 100px;
   background-color: #d1def5;
@@ -28,33 +28,26 @@ body {
   float: right;
 }
 
-.Welcome {
-  padding-top: 100px;
-  text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 25px;
-  padding-left: 35px;
-  padding-top: 60px;
-}
-
 .Poza img {
-  max-width: 80%;
-  max-height: auto;
+  max-width: 160%;
+  max-height: 160%;
   float: right;
   margin-right: 50px;
 }
+
+.PozaLogin img {
+  max-width: 57%;
+  max-height: 57%;
+  float: right;
+  margin-right: 160px;
+}
+
 
 .LoginPage {
   display: flex;
   text-align: left;
   flex-basis: auto;
   margin-right: auto;
-  
-}
-
-.Semnatura {
-  text-align: center;
-  padding-top: 20px;
 }
 
 .Split {
@@ -85,18 +78,17 @@ background-color: #dcdcdc;
   align-items: center;
   
 }
+
 .Left-side{
-    margin: 2rem 2rem;
+    margin: 4rem 4rem;
     height: 80%;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-
-    
-
 }
+
 .Input{
   display: block;
   border: none;
@@ -105,54 +97,67 @@ background-color: #dcdcdc;
   margin: auto;
   margin-bottom: 2rem;
   padding: 0.2rem;
-  border-radius: 15px;
+  border-radius: 14px;
   margin: 10px;
   background-color: #B0C2E8;
   font-size: 14px;
   padding: 17px;
- 
-}
-.Focus{
+  margin-left: 0.5rem;
   outline: none;
   border: none;
 }
+
 .LoginButton {
 margin-bottom: 35px;
 margin-top: 10px;
-margin-left: 50px;
-  margin-right: 150px;
+margin-left: 0.1em;
+margin-right: 150px;
 background-color: #d1def5;
-
 border: none;
 cursor: pointer;
 transition: all 0.2s ease;
 padding: 0.5rem 1rem;
 font-size: 19px;
-  color: black;
-
+font-family: auto;
+color: black;
 }
+
+.LoginButton:hover{
+  outline: 0.1px  rgb(99, 187, 222);
+  box-shadow: 15px rgb(99, 187, 222); 
+  opacity: 0.6;
+  border: none;
+}
+
 
 .RegisterButton {
 margin-right: 20px;
 background-color: #d1def5;
-
 border: none;
 cursor: pointer;
 transition: all 0.2s ease;
 padding: 0.5rem 1rem;
 font-size: 19px;
-  color: black;
+font-family: auto;
+color: black;
+}
 
+.RegisterButton:hover{
+  outline: 0.1px  rgb(99, 187, 222);
+  box-shadow: 15px rgb(99, 187, 222); 
+  opacity: 0.6;
+  border: none;
 }
 
 .ErrorStyle{
-margin-bottom: 15px;
+  margin-bottom: 15px;
   font-size: 15px;
   align-items: center;
   display: flex;
   margin-left: 20px;
   color: red;
 }
+
 .Label{
 display: block;
 text-align: left;
@@ -163,33 +168,39 @@ color: black;
 margin-bottom: 0.5rem;
 font-size: 16px;
 margin-top: 1.5rem;
-  margin-bottom: 1rem;
+margin-left: 1.8rem;
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-style: normal;
 }
-.SubmitButton{
 
-  margin-top: 10px;
-  margin-left: 30%;
-  background-color: #B0C2E8;
+.SubmitButton{
+  margin-top: 20px;
+  margin-left: 34%;
+  background-color: #d1def5;
   cursor: pointer;
   transition: all 0.2s ease;
-  padding: 6px;
-  width: 20%;
-  border-radius: 10px;
-  border: groove;
-  font-size: 17px;
-  color: black;
+  padding: 8px; 
+  width: 21%;
+  border-radius: 14px;
+  font-size: 16px;
+  border: none;
+  align-items: center;
+  outline: 0.5px solid rgb(99, 187, 222);
+  box-shadow: 2px 2px 9px -1px rgb(99, 187, 222);
 }
-.SubmitButton:Hover{
-outline: 0.5px solid rgb(99, 187, 222);
-box-shadow: 2px 2px 9px -1px rgb(99, 187, 222);
-opacity: 0.8;
+
+.SubmitButton:hover{
+  outline: 0.5px solid rgb(99, 187, 222);
+  box-shadow: 2px 2px 9px -1px rgb(99, 187, 222);
+  opacity: 0.8;
 }
+
 .Right-side{
-  margin: 2rem 2rem;
- 
+  margin: 4rem 4rem;
   height: 90%;
   width: 100%;
 }
+
 .Button {
   padding: 10px;
   font-size: 1.2em;
@@ -199,7 +210,6 @@ opacity: 0.8;
   border-radius: 4px;
 }
 
-
 .Text {
   padding-left: 35px;
   padding-right: 35px;
@@ -207,21 +217,18 @@ opacity: 0.8;
   font-size: 17px;
   padding-bottom: 400px;
 }
+
 .Inf1 {
   position: relative;
   top: 25px;
+  font-size: large;
 }
 
 .Home {
   position: relative;
   top: 25px;
   text-decoration: none;
-}
-
-.Contact-Us {
-  position: relative;
-  top: 25px;
-  text-decoration: none;
+  font-size: large;
 }
 
 .Login_Register {
@@ -235,6 +242,7 @@ opacity: 0.8;
   left: 15px;
   text-decoration: none;
 }
+
 .Delimitation {
   background-color: #473f65;
   display: flex;
@@ -242,7 +250,13 @@ opacity: 0.8;
   color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
+
 .formClass{
   margin-left: 50PX;
   display: block !important;
+}
+.Contact-Us {
+  position: relative;
+  top: 25px;
+  text-decoration: none;
 }

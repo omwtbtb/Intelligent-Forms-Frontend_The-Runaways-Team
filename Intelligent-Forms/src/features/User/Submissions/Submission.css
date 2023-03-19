@@ -22,11 +22,11 @@
     border-radius: 15px;
     margin-left: 150px;
     margin-right: 150px;
-    
+    box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(58, 57, 57);
   flex-direction: column;
   
   padding: 20px;
-  padding-bottom: 100px;
+  margin-bottom: 2rem;
   margin-top: 30px;
   
 }
@@ -122,13 +122,20 @@
 .Margin{
     
     margin-left: 0px;
-    padding-top: 10px;
+    padding-top: 1px;
+    margin-left: 0.5rem;
+    height: 1.8rem;
+    display: flex;
+
     
 }
 .Line{
     display: block;
 }
-
+.Search{
+  border-radius: 10px;
+  background-color: lavender;
+}
 .app-container {
     display: flex;
     flex-direction: column;
@@ -210,4 +217,7 @@
     opacity: 0.8;
     cursor: pointer;
     padding: 2px;
+  }
+  .Details{
+    -webkit-text-stroke-width: thin;
   }

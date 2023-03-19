@@ -7,7 +7,7 @@ const FormCreateURL =
   "https://intelligentformsapi.azurewebsites.net/api/v1/forms?userId=";
 
 const GetTempletsURL =
-  "https://intelligentformsapi.azurewebsites.net/api/v1/forms/c054bb40-7900-4be2-1606-08db253984b7";
+  "https://intelligentformsapi.azurewebsites.net/api/v1/forms/";
 
 
 const getTemplatesByUserIdURL='https://intelligentformsapi.azurewebsites.net/api/v1/forms?userId='
@@ -22,8 +22,8 @@ export const createTemplate = async (Template: any, userId: string) => {
   return response;
 };
 
-export const getTemplate = async () => {
-  const response = await TemplateAPI.get(`${GetTempletsURL}`);
+export const getTemplate = async (id:string) => {
+  const response = await TemplateAPI.get(`${GetTempletsURL}${id}`);
   return response;
 };
 

@@ -8,7 +8,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    padding-bottom: 100px;
+    margin-bottom: 2rem;
     margin-top: 30px;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(58, 57, 57);
     /* resize: both; */
@@ -39,7 +39,7 @@
     background-color: #d1def5;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: revert;
     color: #473f65;
     font-weight: 700;
     flex-flow: row wrap;
@@ -137,14 +137,63 @@
     bottom: 0px;
 }
 .iconDetails{
-    margin-right: 2rem;
+    
     cursor: pointer;
 }
-.deleteIcon{
+.deleteIcon {
     cursor: pointer;
-}
+    
+  }
+
+  
+
 .tableDetails{
     justify-content: center !important;
     display: flex !important;
     align-items: center !important;
 }
+/* .text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+  }
+  .icon:hover .text {
+    visibility: visible;
+  } */
+  .icon {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .Tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    transition: visibility 0s, opacity 0.5s;
+  }
+  
+  .icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+  .material-ui-icon {
+    color: #2196f3;
+    font-size: 24px;
+  }
+  .Details{
+    -webkit-text-stroke-width: thin;
+  }

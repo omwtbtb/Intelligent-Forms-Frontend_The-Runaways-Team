@@ -1,38 +1,4 @@
-
-.pdf {
-  height: 400px;
-  width: 550px;
-}
-
-.ContainerFirst {
+.all {
+  justify-content: center;
   text-align: center;
-  padding: 40px;
-  padding-top: 80px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-.Position {
-  padding-top: 10px;
-
-.ContainerFirst {
-  text-align: center;
-  padding: 40px;
-  padding-top: 80px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-.Position {
-  padding-top: 10px;
-
-}
-
-.ContainerFirst {
-  text-align: center;
-  padding: 40px;
-  padding-top: 80px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-.Position {
-  padding-top: 10px;
 }

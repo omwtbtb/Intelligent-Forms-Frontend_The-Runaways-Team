@@ -1,15 +1,30 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import html2pdf from "html2pdf.js";
 import "./ViewForm.css";
 import parse from "html-react-parser";
 
-export default function ViewForm({ form, updateContent }) {
+export default function ViewForm({ form, updateContent, conentPdfAll }) {
   const [pdfUrl, setPdfUrl] = useState(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
-    generatePDF();
-  }, [updateContent]);
+    const generatePDFWithDebounce = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        generatePDF();
+      }, 2000);
+    };
+
+    generatePDFWithDebounce();
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [updateContent, conentPdfAll]);
 
   const generatePDF = () => {
     const elements = document.querySelectorAll(".section");
@@ -42,14 +57,14 @@ export default function ViewForm({ form, updateContent }) {
   return (
     <div>
       <div className="all">
-        <h4>View Form</h4>
-        <iframe src={pdfUrl} width="400px" height="500px" />
+        <iframe src={pdfUrl} width="500px" height="580px" />
         <div className="Pdf" style={{ display: "none" }}>
           {form.sections.map((section, index) => (
             <div className="section" key={index}>
-              {/* {parse(section.content)} */}
-              {updateContent[index] === "" ||
-              typeof updateContent[index] !== "string"
+              {conentPdfAll && typeof conentPdfAll === "string"
+                ? parse(conentPdfAll)
+                : updateContent[index] === "" ||
+                  typeof updateContent[index] !== "string"
                 ? parse(section.content)
                 : parse(updateContent[index])}
             </div>

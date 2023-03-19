@@ -4,14 +4,17 @@ import ViewForm from "./ViewForm";
 import "./FillForm.css";
 import { getTemplate } from "../API/TemplateAPI/TemplateAPI";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { useParams } from "react-router-dom";
 
 export default function FillForm() {
   const [dataResponse, setDataResponse] = useState(null);
   const [content, setContent] = useState([""]);
+  const [conentAll, setConentAll] = useState("");
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getTemplate();
+      const response = await getTemplate(id);
       setDataResponse(response.data);
     }
     fetchData();
@@ -19,22 +22,39 @@ export default function FillForm() {
 
   const handleChildClick = (value) => {
     setContent(value);
-    console.log(value);
   };
 
+  const HandlerAllContent = (value) => {
+    setConentAll(value);
+  };
+
+  console.log(dataResponse);
   return (
     <>
       <div className="All">
         {dataResponse ? (
           <>
-            <Form form={dataResponse} onChildClick={handleChildClick} />
-            <ViewForm form={dataResponse} updateContent={content} />
+            <div className="Logo">
+              <img src="images/Logo.png" alt="Logo" />
+              {dataResponse.formTitle}
+            </div>
+            <div className="FormContainer">
+              <Form
+                form={dataResponse}
+                onChildClick={handleChildClick}
+                TemplateID={id}
+                ChildContent={HandlerAllContent}
+              />
+              <ViewForm
+                form={dataResponse}
+                updateContent={content}
+                conentPdfAll={conentAll}
+              />
+            </div>
           </>
         ) : (
           <>
-            <div className="card flex justify-content-center">
-              <ProgressSpinner />
-            </div>
+            <ProgressSpinner />
           </>
         )}
         <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>

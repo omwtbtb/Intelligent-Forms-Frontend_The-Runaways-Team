@@ -1,4 +1,4 @@
-.Card {
+.a {
   border: 1px solid #aabee6;
   background-color: #c0cfee;
   border-radius: 15px;
@@ -36,7 +36,7 @@
 }
 
 .TextField {
-  margin-left: -57px;
+  margin-left: -20px;
   margin-bottom: 20px;
 }
 

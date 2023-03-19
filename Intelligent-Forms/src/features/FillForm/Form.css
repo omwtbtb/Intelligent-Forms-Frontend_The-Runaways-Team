@@ -1,6 +1,4 @@
 .form {
-  padding-top: 70px;
-
   width: 500px;
 }
 
@@ -9,19 +7,20 @@
   border: 1px solid #aabee6;
   border-radius: 15px 0 0 15px;
   padding: 30px;
-  max-height: 570px;
+  max-height: 580px;
   overflow: auto;
+  box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(58, 57, 57);
 }
 
 .SectionName {
   text-align: left;
   text-decoration: underline;
   font-size: 20px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .Submit {
-  padding-top: 10px;
+  padding-top: 50px;
   text-align: center;
   padding-bottom: 30px;
 }
@@ -29,6 +28,7 @@
 .Pozitionare {
   text-align: right;
 }
+
 .p-inputtext-sm {
   height: 40px;
   width: 250px;
@@ -36,11 +36,17 @@
 
 .DynamicField_Key {
   font-size: 16px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .Scann {
   padding-top: 20px;
   text-align: right;
+  display: flex;
   margin-right: 13px;
+  justify-content: center;
+}
+.IconFile {
+  position: relative;
+  top: 6px;
 }

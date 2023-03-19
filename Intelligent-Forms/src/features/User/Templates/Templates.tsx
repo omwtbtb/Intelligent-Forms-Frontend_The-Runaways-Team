@@ -11,11 +11,15 @@ import NavBar2 from "../NavBar2";
 import EditorComponent from "./Editor";
 import BasicSelect from "./Selecter";
 import "./Templates.css";
+import { Tooltip } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router-dom";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Templates() {
   const [val, setVal] = useState([""]);
+
   const [sect, setSect] = useState({
     formTitle: "",
     dataRetentionPeriod: 0,
@@ -60,12 +64,15 @@ function Templates() {
   }, [opt]);
 
   const CreateForm = async () => {
-    console.log(JSON.parse(JSON.stringify(sect)));
     var response = await createTemplate(
       JSON.parse(JSON.stringify(sect)),
       localStorage.getItem("userId")!
     );
-
+    if (response.status === 200) {
+      window.location.href = "#/Update_Form";
+    } else {
+      console.log("Fail");
+    }
     console.log(response);
   };
 
@@ -257,7 +264,7 @@ function Templates() {
   return (
     <div>
       <NavBar2 />
-      <div className="Card">
+      <div className="a">
         <div className="container1">
           <div className="Title">Title:</div>
           <br />
@@ -317,9 +324,10 @@ function Templates() {
                       variant="outlined"
                       size="small"
                       onClick={() => handleDelete(index)}
-                      startIcon={<DeleteIcon />}
                     >
-                      Delete
+                      <Tooltip title="Delete">
+                        <DeleteIcon />
+                      </Tooltip>
                     </Button>
                   </div>
                 );
@@ -334,7 +342,9 @@ function Templates() {
                 setVal([...val, ""]), setplaceHolder_key("");
               }}
             >
-              Add New
+              <Tooltip title="Add">
+                <AddIcon />
+              </Tooltip>
             </Button>
           </div>
           <div className="text">
@@ -357,9 +367,10 @@ function Templates() {
                       variant="outlined"
                       size="small"
                       onClick={() => handleDeleteselection(index1)}
-                      startIcon={<DeleteIcon />}
                     >
-                      Delete
+                      <Tooltip title="Delete">
+                        <DeleteIcon />
+                      </Tooltip>
                     </Button>
                   </div>
                 );
@@ -368,7 +379,9 @@ function Templates() {
           </div>
           <div className="buttons">
             <Button variant="outlined" size="small" onClick={handleAddSection}>
-              Add New
+              <Tooltip title="Add">
+                <AddIcon />
+              </Tooltip>
             </Button>
           </div>
           <div className="data_retention">
@@ -481,9 +494,10 @@ function Templates() {
                           variant="outlined"
                           size="small"
                           onClick={() => handleDeleteOpt(index)}
-                          startIcon={<DeleteIcon />}
                         >
-                          Delete
+                          <Tooltip title="Delete">
+                            <DeleteIcon />
+                          </Tooltip>
                         </Button>
                       </div>
                     );
@@ -495,7 +509,9 @@ function Templates() {
                     size="small"
                     onClick={() => setOpt([...opt, ""])}
                   >
-                    Add New
+                    <Tooltip title="Add">
+                      <AddIcon />
+                    </Tooltip>
                   </Button>
                 </div>
               </div>

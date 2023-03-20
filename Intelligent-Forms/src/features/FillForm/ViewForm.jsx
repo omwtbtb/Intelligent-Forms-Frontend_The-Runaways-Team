@@ -3,7 +3,7 @@ import html2pdf from "html2pdf.js";
 import "./ViewForm.css";
 import parse from "html-react-parser";
 
-export default function ViewForm({ form, updateContent, conentPdfAll }) {
+export default function ViewForm({ form, conentPdfAll }) {
   const [pdfUrl, setPdfUrl] = useState(null);
   const timeoutRef = useRef(null);
 
@@ -24,7 +24,7 @@ export default function ViewForm({ form, updateContent, conentPdfAll }) {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [updateContent, conentPdfAll]);
+  }, [conentPdfAll]);
 
   const generatePDF = () => {
     const elements = document.querySelectorAll(".section");
@@ -56,17 +56,14 @@ export default function ViewForm({ form, updateContent, conentPdfAll }) {
 
   return (
     <div>
-      <div className="all">
+      <div className="all5">
         <iframe src={pdfUrl} width="500px" height="580px" />
         <div className="Pdf" style={{ display: "none" }}>
           {form.sections.map((section, index) => (
             <div className="section" key={index}>
               {conentPdfAll && typeof conentPdfAll === "string"
                 ? parse(conentPdfAll)
-                : updateContent[index] === "" ||
-                  typeof updateContent[index] !== "string"
-                ? parse(section.content)
-                : parse(updateContent[index])}
+                : parse(section.content)}
             </div>
           ))}
         </div>

@@ -19,7 +19,7 @@
   background-color: #d1def5;
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #473f65;
   font-weight: 700;
   flex-flow: row wrap;
@@ -38,7 +38,7 @@
 .Label1 {
   text-align: right;
   padding-left: 20px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
 }
 
@@ -75,23 +75,19 @@
 
 .container {
   height: 35px;
-  margin-left: 210px;
+  margin-left: 195px;
+  margin-top: 2.5rem;
   display: flex;
   justify-content: left;
   align-items: normal;
 }
 
-/* .Text{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #473f65;
-    font-size: xx-small;
-} */
 .Delimitation {
   background-color: #473f65;
   display: flex;
   justify-content: center;
   color: white;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Arial, Helvetica, sans-serif;
   position: fixed;
   left: 0px;
   right: 0px;
@@ -126,19 +122,10 @@ table {
 
 th,
 td {
-  /* border: 1px solid #ffffff; */
   text-align: center;
   padding: 8px;
   font-size: 15px;
 }
-
-/* th {
-    background-color:#aabee6;
-  }
-   */
-/* td {
-    background-color: #aabee6;
-  } */
 
 form {
   display: flex;
@@ -178,7 +165,7 @@ form * {
   font-size: 17px;
   margin-bottom: 10%;
   padding-bottom: 20%;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #473f65;
 }
 

@@ -28,7 +28,7 @@ function BasicSelect({ parentCont, valUpdate }) {
           value={identifity ? identifity : "None"}
         >
           <MenuItem value={"None"}>None</MenuItem>
-          <MenuItem value={"Identity_Card"}>Identify card</MenuItem>
+          <MenuItem value={"Identity_Card"}>Identity card</MenuItem>
           <MenuItem value={"Passport_Card"}>Passport card</MenuItem>
           <MenuItem value={"Birth_Certificate"}>Birth certificate</MenuItem>
           <MenuItem value={"Vehicle_Identity_Card"}>

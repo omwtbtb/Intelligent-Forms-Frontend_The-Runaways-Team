@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 
 export default function FillForm() {
   const [dataResponse, setDataResponse] = useState(null);
-  const [content, setContent] = useState([""]);
   const [conentAll, setConentAll] = useState("");
   const { id } = useParams();
 
@@ -20,44 +19,36 @@ export default function FillForm() {
     fetchData();
   }, []);
 
-  const handleChildClick = (value) => {
-    setContent(value);
-  };
-
   const HandlerAllContent = (value) => {
     setConentAll(value);
   };
 
-  console.log(dataResponse);
   return (
     <>
-      <div className="All">
+      <div className="All1">
         {dataResponse ? (
           <>
-            <div className="Logo">
+            <div className="Logo1">
               <img src="images/Logo.png" alt="Logo" />
               {dataResponse.formTitle}
             </div>
-            <div className="FormContainer">
+            <div className="FormContainer1">
               <Form
                 form={dataResponse}
-                onChildClick={handleChildClick}
                 TemplateID={id}
                 ChildContent={HandlerAllContent}
               />
-              <ViewForm
-                form={dataResponse}
-                updateContent={content}
-                conentPdfAll={conentAll}
-              />
+              <ViewForm form={dataResponse} conentPdfAll={conentAll} />
             </div>
           </>
         ) : (
           <>
-            <ProgressSpinner />
+            <div className="spinner">
+              <ProgressSpinner />
+            </div>
           </>
         )}
-        <div className="Delimitation">© 2023 INTELLIGENT FORMS</div>
+        <div className="Delimitation2">© 2023 INTELLIGENT FORMS</div>
       </div>
     </>
   );

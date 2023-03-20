@@ -7,13 +7,13 @@ body {
 }
 
 .Nav-Bar {
-  padding: 5px; 
+  padding: 5px;
   margin: 0 auto;
   padding-right: 100px;
   background-color: #d1def5;
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #473f65;
   font-weight: 700;
   flex-flow: row wrap;
@@ -32,7 +32,7 @@ body {
 .Welcome {
   padding-top: 100px;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   padding-left: 1.5em !important;
   padding-top: 5em !important;
@@ -44,6 +44,7 @@ body {
   max-height: 45%;
   float: right;
   margin-right: 105px;
+  margin-top: 2rem;
 }
 
 .Form {
@@ -52,6 +53,21 @@ body {
   flex-basis: auto;
   margin-right: auto;
   margin-left: 4em;
+}
+
+.LogoPoza {
+  margin-top: -2.5rem;
+  margin-bottom: 0em;
+  padding-top: 1em;
+}
+
+.textInt {
+  margin-left: 4.5em;
+  margin-top: -2.6em;
+}
+
+.ProfileIcon {
+  margin-top: 0.7em;
 }
 
 .Semnatura {
@@ -64,11 +80,10 @@ body {
   padding-left: 0.2em !important;
   padding-right: 35px;
   padding-top: 30px;
-  font-size: 30px;
   padding-bottom: 200px !important;
-  font-family:'Times New Roman', Times, serif;
-  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
   color: #473f65 !important;
+  font-weight: 200%;
 }
 .Inf1 {
   position: relative;
@@ -98,7 +113,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .dropdown-menu {
@@ -108,12 +123,12 @@ body {
   background-color: #d1def5;
   border: 1px solid #9b9b9b;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 13px;
   z-index: 1;
 }
 
-.dropdown-menu::before{
+.dropdown-menu::before {
   content: "";
   position: absolute;
   top: -0.7rem;
@@ -124,12 +139,12 @@ body {
   background-color: #d1def5;
   border-left: 1px solid gray;
   border-top: 1px solid gray;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.dropdown-menu .Inf2{
+.dropdown-menu .Inf2 {
   display: block;
-  padding: 9px 5px;
+  padding: 8px 4px;
   color: #473f65;
   left: -0.1em;
   top: -0.1em;
@@ -138,7 +153,7 @@ body {
 }
 .dropdown-menu .Inf3 {
   display: flex;
-  padding: 9px 5px;
+  padding: 8px 4px;
   color: #473f65;
   left: 1rem;
   top: 2rem;
@@ -147,7 +162,7 @@ body {
   width: 70px;
 }
 
-.ProfileIcon:hover{
+.ProfileIcon:hover {
   cursor: pointer;
 }
 .Contact-Us {

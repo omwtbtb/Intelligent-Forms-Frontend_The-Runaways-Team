@@ -1,10 +1,10 @@
-.All {
+.All1 {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.Logo {
+.Logo1 {
   display: flex;
   align-items: center;
   font-size: 20px;
@@ -14,14 +14,49 @@
   padding-left: 2vw;
 }
 
-.FormContainer {
+.FormContainer1 {
   justify-content: center;
   text-align: center;
   display: flex;
   gap: 20rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.Delimitation {
+.Delimitation2 {
   margin-top: 2rem;
   text-align: center;
+  background-color: #473f65;
+  justify-content: center;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media only screen and (max-width: 768px) {
+  .All1 {
+    display: block;
+  }
+  .Logo1 {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .FormContainer1 {
+    padding-top: 500px;
+    display: block;
+    justify-content: auto;
+    text-align: auto;
+  }
 }

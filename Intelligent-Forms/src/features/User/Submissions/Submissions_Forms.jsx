@@ -19,7 +19,6 @@ import ArrowForwardSharp from "@mui/icons-material/ArrowForwardSharp";
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function Submission_Forms()
-
 {
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -53,10 +52,20 @@ export default function Submission_Forms()
   submissions.sort((a, b) => new Date(a.timeStamp) - new Date(b.timeStamp));
   
   function convertHtmlToPdf(htmlString, id) {
+
+    const options = {
+      margin: [0, 0, 0, 0],
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+
+
     html2pdf()
+      .set(options)
       .from(htmlString)
       .save(`submission${id}`)
-  }  
+  } 
 
 
   function MyTable() {

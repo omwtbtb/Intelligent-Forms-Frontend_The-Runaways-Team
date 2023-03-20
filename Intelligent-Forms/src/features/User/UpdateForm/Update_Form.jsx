@@ -16,11 +16,20 @@ import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import {QRCodeCanvas} from 'qrcode.react';
+import Dialog from '@mui/material/Dialog';
+import { width } from "@mui/system";
 
 
 function Update_Form(props) {
- const navigate = useNavigate()
- const [hover, setHover] = useState(false);
+  const [qrCodeId, setQrCodeId] = useState(null);
+
+  const handleQrCodeClick = (id) => {
+    setQrCodeId(id);
+  };
+
+  const handleCloseQrCode = () => {
+    setQrCodeId(null);
+  };
   const deleteTemplate = async(activeTemplateId)=>{
     Swal.fire({
       title: 'Do you want to delete the form?',
@@ -58,6 +67,7 @@ function MyTable({data, OnAction}){
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
+    <>
     <TableContainer>
   <Table style={{ tableLayout: 'fixed' }}>
     <TableHead>
@@ -83,9 +93,17 @@ function MyTable({data, OnAction}){
               {`intelligentforms.azurewebsites/#/FillForm/${row.id}`}
             </a>
           </TableCell>
-          <TableCell key={'fillFormLink'} align="center">
-          <QRCodeCanvas style={{width:'50px', height:'50px'}} value={`intelligentforms.azurewebsites.net/#/FillForm/${row.id}`}/>
-          </TableCell>
+          <TableCell key={'qrCode'} align="center">
+          <Tooltip title='Click to enlarge'>
+         <IconButton>
+          <QRCodeCanvas
+            style={{ width: '28px', height: '28px', cursor: 'pointer' }}
+            value={`intelligentforms.azurewebsites.net/#/FillForm/${row.id}`}
+            onClick={() => handleQrCodeClick(row.id)}
+          />
+          </IconButton>
+          </Tooltip>
+        </TableCell>
           <TableCell key={'formActions'} align="center" className="tableDetails">
            <Tooltip title="View">
             <IconButton>
@@ -116,7 +134,16 @@ function MyTable({data, OnAction}){
   />
 </div>
     </TableContainer>
+       <Dialog open={!!qrCodeId} onClose={handleCloseQrCode}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30vh',  width:'30vh' }}>
+          <QRCodeCanvas style={{ width: '200px', height: '200px'}} value={`intelligentforms.azurewebsites.net/#/FillForm/${qrCodeId}`} />
+        </div>
+      </Dialog>
+    </>
   );
+
+
+
 }
 
 
@@ -161,6 +188,7 @@ function MyTable({data, OnAction}){
         </div>
       )}
       {!update && <FormActions activeTemplateId={activeTemplateId} />}
+      
     </div>
   );
 }

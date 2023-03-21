@@ -28,9 +28,9 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-      - name: Compress app folder
-        run: |
-          tar -czvf node-app.tar.gz .
+
+      - name: Compress artifact
+        run: tar -czvf node-app.tar.gz node-app
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -50,11 +50,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-          
-      - name: Unzip app folder
-        run: |
-          tar -xzvf node-app.tar.gz
-          
+
+      - name: Extract artifact
+        run: tar -xzvf node-app.tar.gz
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
@@ -62,4 +61,4 @@ jobs:
           app-name: 'IntelligentForms'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_443ECB5572FC4DEE895B11F3E15AD678 }}
-          package: .
+          package: node-app

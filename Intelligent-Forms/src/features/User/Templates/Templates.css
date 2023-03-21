@@ -28,34 +28,24 @@
 .Title {
   display: flex;
   flex-direction: row;
-  justify-content: left;
-  align-items: left;
-  margin-left: 3.8em;
-  margin-bottom: -0.2em;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.dynamicFields {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: left;
-  margin-left: 3.8em;
-  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -18px;
+  padding-left: 19px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .TextField {
-  margin-left: -4.9em;
-  margin-bottom: 1.5em;
-  font-family: Arial, Helvetica, sans-serif;
+  margin-left: -20px;
+  margin-bottom: 20px;
 }
 
 .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -4.5rem;
-  margin-bottom: 1.4em;
+  margin-top: 10px;
+  padding-bottom: 20px;
 }
 .btn {
   padding-top: 10px;
@@ -64,7 +54,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .buttons > button {
@@ -76,7 +66,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin-left: -10px;
   padding-top: 20px;
 }
@@ -86,35 +76,19 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin-left: 62px;
 }
 
 .text {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
-.sectionsName {
-  justify-content: left;
-  align-items: left;
-  margin-left: -14em;
-  margin-bottom: -0.2em;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .it3 {
   margin-left: 10px;
   width: 180px;
-  display: flex;
 }
-
-.dataret {
-  margin-inline-start: -2em;
-}
-
 .it {
   margin-left: 10px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .label {
@@ -123,12 +97,8 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: -6.2rem;
-}
-
-.Buttondis {
-  margin-inline-start: 8rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: 20px;
 }
 
 .Placeholder {
@@ -137,17 +107,8 @@
   justify-content: right;
   align-items: center;
   margin-bottom: 20px;
-  margin-right: 187px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.PlaceHolderKeyword {
-  margin-inline-start: 1.3rem;
-}
-
-.deleteButton {
-  margin-left: 5em;
-  margin-bottom: 2rem;
+  margin-right: 178px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .it1 {
@@ -160,12 +121,8 @@
   justify-content: left;
   align-items: center;
   margin-bottom: 20px;
-  margin-left: 87px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.CheckBut {
-  margin-inline-start: 5rem;
+  margin-left: 160px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .field_type {
@@ -174,30 +131,20 @@
   justify-content: left;
   align-items: center;
   margin-bottom: 20px;
-  margin-left: 86px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.selectTyp {
-  margin-inline-start: 5.4rem;
+  margin-left: 170px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .options {
-  font-family: Arial, Helvetica, sans-serif;
-  margin-right: 5.7rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
 .document {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  padding-right: 103px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.DocKey {
-  margin-inline-start: 1.6rem;
+  padding-right: 75px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .interor {
@@ -208,20 +155,14 @@
   margin-left: 50px;
 }
 .int2 {
-  margin-left: -4em;
-  margin-bottom: 1em;
-  margin-top: 1.3em;
-  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 10px;
 }
-
 .content {
-  font-family: Arial, Helvetica, sans-serif;
-  margin-right: 26.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .int3 {
   margin-left: 100px;
   width: 100px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .Create {
   text-align: center;

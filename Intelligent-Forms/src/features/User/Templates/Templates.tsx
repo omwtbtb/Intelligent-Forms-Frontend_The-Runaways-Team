@@ -266,21 +266,21 @@ function Templates() {
       <NavBar2 />
       <div className="a">
         <div className="container1">
-          <div className="Title">Title</div>
+          <div className="Title">Title:</div>
           <br />
           <div className="TextField">
             <TextField
               id="outlined-basic"
               variant="outlined"
               size="small"
-              placeholder="Name of the form"
+              placeholder="e.g.: name of the form"
               value={valTitle}
               onChange={(e) => HandlerTitle(e)}
             />
           </div>
 
           <div className="text">
-            <div className="dynamicFields">Dynamic Fields</div>
+            Dynamic Fields:
             <div className="inputs">
               {val.map((item, index) => {
                 return (
@@ -289,7 +289,7 @@ function Templates() {
                       <TextField
                         id="outlined-basic"
                         variant="outlined"
-                        placeholder="Name, CNP etc."
+                        placeholder="e.g.: name, cnp etc."
                         value={item}
                         size="small"
                         onChange={(e) => handleChanges(e, index)}
@@ -320,7 +320,11 @@ function Templates() {
                         }}
                       />
                     </div>
-                    <Button size="small" onClick={() => handleDelete(index)}>
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      onClick={() => handleDelete(index)}
+                    >
                       <Tooltip title="Delete">
                         <DeleteIcon />
                       </Tooltip>
@@ -344,7 +348,7 @@ function Templates() {
             </Button>
           </div>
           <div className="text">
-            <div className="sectionsName">Sections</div>
+            Sections:
             <div className="inputs">
               {sect.sections.map((item1, index1) => {
                 return (
@@ -354,12 +358,13 @@ function Templates() {
                         id="outlined-basic"
                         variant="outlined"
                         size="small"
-                        placeholder="Name of the section"
+                        placeholder="e.g.: name of the section"
                         onChange={(e) => ChangeEvent(e, index1)}
                         onClick={() => handleChangeSelectedSection(index1)}
                       />
                     </div>
                     <Button
+                      variant="outlined"
                       size="small"
                       onClick={() => handleDeleteselection(index1)}
                     >
@@ -380,7 +385,7 @@ function Templates() {
             </Button>
           </div>
           <div className="data_retention">
-            <div className="dataRetention">Data Retention Period</div>
+            Data Retention Period:
             <div className="it3">
               <TextField
                 id="outlined-number"
@@ -402,7 +407,7 @@ function Templates() {
           </div>
 
           <div className="scan_document">
-            <div className="scanDocument">Scan document type</div>
+            Scan document type:
             <div className="it">
               <BasicSelect parentCont={ChangeScan} valUpdate={valScan} />
             </div>
@@ -411,8 +416,8 @@ function Templates() {
 
         <div className="container2">
           <div className="label">
-            <div className="LabelLabel">Label</div>
-            <div className="Buttondis">
+            Label:
+            <div className="it">
               <TextField
                 disabled
                 id="outlined-disabled"
@@ -423,50 +428,46 @@ function Templates() {
             </div>
           </div>
           <div className="Placeholder">
-            <div className="Place">Placeholder keyword</div>
-            <div className="PlaceHolderKeyword">
+            Placeholder keyword:
+            <div className="it1">
               <TextField
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
-                placeholder="<name>, <cnp> etc."
+                placeholder="e.g.: first_name, last_name etc."
                 value={placeHolder_key}
                 onChange={(e) => HandlerChangePlaceHoder(e)}
               />
             </div>
           </div>
           <div className="madatory">
-            <div className="manBut">Mandatory</div>
-            <div className="CheckBut">
-              <Checkbox
-                {...label}
-                checked={isChecked}
-                onChange={handleCheckboxChange}
-              />
-            </div>
+            Mandatory:
+            <Checkbox
+              {...label}
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
           </div>
           <div className="field_type">
-            <div className="FieldTyp"> Field Type</div>
-            <div className="selectTyp">
-              <FormControl sx={{ m: 1, minWidth: 80 }}>
-                <Select
-                  labelId="demo-simple-select-autowidth-label"
-                  id="demo-simple-select-autowidth"
-                  onChange={handleChange}
-                  autoWidth
-                  size="small"
-                  value={valField ? valField : "None"}
-                >
-                  <MenuItem value={"None"}>None</MenuItem>
-                  <MenuItem value={"Text"}>Text</MenuItem>
-                  <MenuItem value={"Number"}>Number</MenuItem>
-                  <MenuItem value={"Decimal"}>Decimal</MenuItem>
-                  <MenuItem value={"Date"}>Date</MenuItem>
-                  <MenuItem value={"Single-choice"}>Single-choice</MenuItem>
-                  <MenuItem value={"Multiple-choice"}>Multiple-choice</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
+            Field Type:
+            <FormControl sx={{ m: 1, minWidth: 80 }}>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                onChange={handleChange}
+                autoWidth
+                size="small"
+                value={valField ? valField : "None"}
+              >
+                <MenuItem value={"None"}>None</MenuItem>
+                <MenuItem value={"Text"}>Text</MenuItem>
+                <MenuItem value={"Number"}>Number</MenuItem>
+                <MenuItem value={"Decimal"}>Decimal</MenuItem>
+                <MenuItem value={"Date"}>Date</MenuItem>
+                <MenuItem value={"Single-choice"}>Single-choice</MenuItem>
+                <MenuItem value={"Multiple-choice"}>Multiple-choice</MenuItem>
+              </Select>
+            </FormControl>
           </div>
 
           {(sect.sections[IndexCurentSec]?.fields[IndexDynamicFields]
@@ -474,13 +475,13 @@ function Templates() {
             sect.sections[IndexCurentSec]?.fields[IndexDynamicFields]
               ?.fieldType === "Multiple-choice") && (
             <>
-              <div className="options">Options</div>
+              <div className="options">Options:</div>
               <div className="buttonsOpt">
                 <div className="inputs">
                   {opt.map((item1, index) => {
                     return (
                       <div className="interor" key={index}>
-                        <div className="op1">
+                        <div className="int2">
                           <TextField
                             id="outlined-basic"
                             variant="outlined"
@@ -490,6 +491,7 @@ function Templates() {
                           />
                         </div>
                         <Button
+                          variant="outlined"
                           size="small"
                           onClick={() => handleDeleteOpt(index)}
                         >
@@ -516,19 +518,19 @@ function Templates() {
             </>
           )}
           <div className="document">
-            <div className="divLabel">Document keywords</div>
-            <div className="DocKey">
+            Document keywords:
+            <div className="it">
               <TextField
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
-                placeholder="CNP, social number etc."
+                placeholder="e.g.: cnp, social number etc."
                 value={valDocument}
                 onChange={HandlerChangeDocument}
               />
             </div>
           </div>
-          <div className="content">Content</div>
+          <div className="content">Content:</div>
           <EditorComponent
             sect={sect}
             parentContent={localEditorValue}

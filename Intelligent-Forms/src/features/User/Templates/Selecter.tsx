@@ -30,7 +30,6 @@ function BasicSelect({ parentCont, valUpdate }) {
           <MenuItem value={"None"}>None</MenuItem>
           <MenuItem value={"Identity_Card"}>Identity card</MenuItem>
           <MenuItem value={"Passport_Card"}>Passport card</MenuItem>
-          <MenuItem value={"Birth_Certificate"}>Birth certificate</MenuItem>
           <MenuItem value={"Vehicle_Identity_Card"}>
             Vehicle Identity card
           </MenuItem>

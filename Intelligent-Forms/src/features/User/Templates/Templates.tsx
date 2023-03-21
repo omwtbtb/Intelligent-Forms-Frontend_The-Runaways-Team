@@ -13,7 +13,6 @@ import BasicSelect from "./Selecter";
 import "./Templates.css";
 import { Tooltip } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { Link } from "react-router-dom";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -228,8 +227,7 @@ function Templates() {
   const handleAddSection = () => {
     setSect((prevState) => {
       return {
-        formTitle: "",
-        dataRetentionPeriod: 0,
+        ...prevState,
         sections: [
           ...prevState.sections,
           {

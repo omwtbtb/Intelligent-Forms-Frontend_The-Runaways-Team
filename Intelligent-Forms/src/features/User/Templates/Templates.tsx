@@ -273,7 +273,7 @@ function Templates() {
               id="outlined-basic"
               variant="outlined"
               size="small"
-              placeholder="E.g.: Name of the form"
+              placeholder="Name of the form"
               value={valTitle}
               onChange={(e) => HandlerTitle(e)}
             />
@@ -289,7 +289,7 @@ function Templates() {
                       <TextField
                         id="outlined-basic"
                         variant="outlined"
-                        placeholder="E.g.: Name, CNP etc."
+                        placeholder="Name, CNP etc."
                         value={item}
                         size="small"
                         onChange={(e) => handleChanges(e, index)}
@@ -354,7 +354,7 @@ function Templates() {
                         id="outlined-basic"
                         variant="outlined"
                         size="small"
-                        placeholder="E.g.: Name of the section"
+                        placeholder="Name of the section"
                         onChange={(e) => ChangeEvent(e, index1)}
                         onClick={() => handleChangeSelectedSection(index1)}
                       />
@@ -429,7 +429,7 @@ function Templates() {
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
-                placeholder="E.g.: first_name, last_name etc."
+                placeholder="<name>, <cnp> etc."
                 value={placeHolder_key}
                 onChange={(e) => HandlerChangePlaceHoder(e)}
               />
@@ -522,7 +522,7 @@ function Templates() {
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
-                placeholder="E.g.: CNP, social number etc."
+                placeholder="CNP, social number etc."
                 value={valDocument}
                 onChange={HandlerChangeDocument}
               />

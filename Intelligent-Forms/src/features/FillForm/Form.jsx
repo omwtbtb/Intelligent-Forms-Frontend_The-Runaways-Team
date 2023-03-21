@@ -55,6 +55,7 @@ export default function Form({ form, TemplateID, ChildContent }) {
 
   const handleCapture = useCallback(
     (documentType) => {
+      console.log(documentType);
       const imageSrc = webcamRef.current.getScreenshot();
       const canvas = document.createElement("canvas");
       const img = new Image();
@@ -536,53 +537,52 @@ export default function Form({ form, TemplateID, ChildContent }) {
             </table>
             {section.documentType !== "None" ? (
               <div className="Scann">
-                <div>
-                  <Tooltip title="Scan with camera">
-                    <IconButton>
-                      <CameraAltIcon onClick={handleOpen} />
-                    </IconButton>
-                  </Tooltip>
-                  <Dialog
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      width: "1920px",
-                    }}
-                    open={open}
-                    onClose={handleClose}
-                  >
-                    <DialogContent>
-                      {photoData ? (
-                        <div></div>
-                      ) : (
-                        <div>
-                          <div
-                            style={{
-                              transform: "scaleX(-1)",
-                              width: "100%",
-                              height: "100%",
-                            }}
-                          >
-                            <Webcam
-                              audio={false}
-                              ref={webcamRef}
-                              style={{ width: "100%", height: "100%" }}
-                            />
-                          </div>
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => handleCapture(section.documentType)}
-                            style={{ marginTop: "16px" }}
-                          >
-                            Capture
-                          </Button>
+                <Tooltip title="Scan with camera">
+                  <IconButton>
+                    <CameraAltIcon onClick={handleOpen} />
+                  </IconButton>
+                </Tooltip>
+                <Dialog
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "1920px",
+                  }}
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <DialogContent>
+                    {photoData ? (
+                      <div></div>
+                    ) : (
+                      <div>
+                        <div
+                          style={{
+                            transform: "scaleX(-1)",
+                            width: "100%",
+                            height: "100%",
+                          }}
+                        >
+                          <Webcam
+                            audio={false}
+                            ref={webcamRef}
+                            style={{ width: "100%", height: "100%" }}
+                          />
                         </div>
-                      )}
-                    </DialogContent>
-                  </Dialog>
-                </div>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => handleCapture(section.documentType)}
+                          style={{ marginTop: "16px" }}
+                        >
+                          Capture
+                        </Button>
+                      </div>
+                    )}
+                  </DialogContent>
+                </Dialog>
+
                 <IconButton>
                   <FileUploadIcon
                     className="IconFile"

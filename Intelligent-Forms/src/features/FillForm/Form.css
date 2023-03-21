@@ -63,6 +63,14 @@
     border-radius: 15px 15px 15px 15px;
   }
   .form {
+    padding-top: 400px;
     padding-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .form {
+    padding: 50px;
+    padding-top: 400px;
   }
 }

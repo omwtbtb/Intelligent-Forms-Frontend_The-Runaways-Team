@@ -105,7 +105,13 @@
 .it3 {
   margin-left: 10px;
   width: 180px;
+  display: flex;
 }
+
+.dataret {
+  margin-inline-start: -2em;
+}
+
 .it {
   margin-left: 10px;
   font-family: Arial, Helvetica, sans-serif;
